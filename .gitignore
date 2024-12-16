@@ -1,0 +1,3 @@
+data/raw/chr1.vcf
+data/interim/chr1_annotated.vcf
+data/interim/annoed_variant_id.csv
