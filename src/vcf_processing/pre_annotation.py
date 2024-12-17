@@ -27,14 +27,9 @@ def run_vep(input_vcf, output_vcf):
     ]
 
     subprocess.check_call(cmd)
-   
-
-
+    
 if __name__ == "__main__":
-    # 假定输入数据在data/raw目录下
     input_vcf = "data/raw/chr1.vcf"
     annotated_vcf = "data/interim/chr1_annotated.vcf"
-
     # 首先运行VEP注释
     run_vep(input_vcf, annotated_vcf)
-

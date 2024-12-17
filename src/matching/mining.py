@@ -1,0 +1,100 @@
+#!/usr/bin/env python3
+import requests
+import json
+import csv
+
+def query_pubtator(pmids, format="biocjson"):
+    pmids_str = ",".join(pmids)
+    url = f"https://www.ncbi.nlm.nih.gov/research/pubtator3-api/publications/export/{format}?pmids={pmids_str}"
+    response = requests.get(url)
+    response.raise_for_status()  # 若非200状态码会抛出异常
+    return response.json()
+
+def extract_entities(data):
+    documents = data.get("PubTator3", [])
+    results = []
+    for doc in documents:
+        pmid = doc.get("pmid", "")
+        
+        genes = []
+        mutations = []
+        diseases = []
+        
+        passages = doc.get("passages", [])
+        for passage in passages:
+            annotations = passage.get("annotations", [])
+            for ann in annotations:
+                infons = ann.get("infons", {})
+                entity_type = infons.get("type", "")
+                entity_text = ann.get("text", "")
+                
+                etype_lower = entity_type.lower()
+                if etype_lower == "gene":
+                    genes.append(entity_text)
+                elif etype_lower in ["mutation", "variant"]:
+                    mutations.append(entity_text)
+                elif etype_lower == "disease":
+                    diseases.append(entity_text)
+
+        gene_str = ";".join(genes)
+        mutation_str = ";".join(mutations)
+        disease_str = ";".join(diseases)
+        
+        if disease_str.strip() == "":
+            continue
+        
+        results.append({
+            "pmid": pmid,
+            "gene": gene_str,
+            "mutation": mutation_str,
+            "disease": disease_str
+        })
+    return results
+
+def write_to_csv(results):
+    output_csv="results/entities_extracted.csv"
+    fieldnames = ["pmid", "gene", "mutation", "disease"]
+    with open(output_csv, "w", newline='', encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for row in results:
+            writer.writerow(row)
+
+def get_pmids_from_csv(input_csv, pmid_column="pmids"):
+    pmid_set = set()
+    with open(input_csv, "r", newline='', encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            pmid_str = row.get(pmid_column, "")
+            if pmid_str.strip():
+                pmids = pmid_str.split("\n")
+                for p in pmids:
+                    p = p.strip()
+                    if p:
+                        pmid_set.add(p)
+    return list(pmid_set)
+
+def main():
+    # 从CSV获取PMIDs列表并去重
+    pmids = get_pmids_from_csv("results/protein_pubmed.csv", pmid_column="pmids")
+
+    all_results = []
+    # 每批次请求100个PMID
+    batch_size = 100
+    for i in range(0, len(pmids), batch_size):
+        batch_pmids = pmids[i:i+batch_size]
+        # 若batch_pmids为空或没有PMID则跳过
+        if not batch_pmids:
+            continue
+        
+        # 查询PubTator
+        bioc_data = query_pubtator(batch_pmids, format="biocjson")
+        # 解析数据
+        batch_results = extract_entities(bioc_data)
+        all_results.extend(batch_results)
+
+    # 所有批次合并后写入CSV
+    write_to_csv(all_results)
+
+if __name__ == "__main__":
+    main()
