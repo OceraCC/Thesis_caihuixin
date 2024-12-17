@@ -73,28 +73,3 @@ def get_pmids_from_csv(input_csv, pmid_column="pmids"):
                     if p:
                         pmid_set.add(p)
     return list(pmid_set)
-
-def main():
-    # 从CSV获取PMIDs列表并去重
-    pmids = get_pmids_from_csv("results/protein_pubmed.csv", pmid_column="pmids")
-
-    all_results = []
-    # 每批次请求100个PMID
-    batch_size = 100
-    for i in range(0, len(pmids), batch_size):
-        batch_pmids = pmids[i:i+batch_size]
-        # 若batch_pmids为空或没有PMID则跳过
-        if not batch_pmids:
-            continue
-        
-        # 查询PubTator
-        bioc_data = query_pubtator(batch_pmids, format="biocjson")
-        # 解析数据
-        batch_results = extract_entities(bioc_data)
-        all_results.extend(batch_results)
-
-    # 所有批次合并后写入CSV
-    write_to_csv(all_results)
-
-if __name__ == "__main__":
-    main()

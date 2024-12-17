@@ -41,10 +41,3 @@ def parse_vep_output_for_protein_changes(annotated_vcf):
     # 将结果保存为CSV文件
     output_csv = "data/interim/annoed_variant_id.csv"
     df_deduplicated.to_csv(output_csv, index=False)
-    
-if __name__ == "__main__":
-    # 假定输入数据在data/raw目录下
-    annotated_vcf = "/Users/caicai/THESIS/annotated_everything_chr1.vcf"
-
-    # 解析注释后的VCF文件，提取蛋白变异信息
-    parse_vep_output_for_protein_changes(annotated_vcf)

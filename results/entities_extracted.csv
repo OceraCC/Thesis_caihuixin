@@ -1,155 +1,167 @@
 pmid,gene,mutation,disease
 1373334,,Pro574----Leu;Val553----Met,type IIB von Willebrand disease;von Willebrand disease (vWD) variant type IIB;inherited bleeding disorder;type IIB vWD;type IIB vWD;type IIB vWD
-1672694,GpIb;von Willebrand Factor;vWF;GpIb;vWF;GpIb,Arg543----Trp;Arg545----Cys;Val553----Met;Arg578----Gln;Arg543----Trp,type IIB von Willebrand disease;Type IIB von Willebrand Disease;vWD;Type IIB vWD;Type IIB vWD;Type IIB vWD
-11222377,GPIbalpha;GPIbalpha,Ala156Val;Ala156Val,Autosomal dominant macrothrombocytopenia;Bernard-Soulier syndrome;autosomal dominant macrothrombocytopenia;Bernard-Soulier syndrome;BSS;BSS;autosomal dominant macrothrombocytopenia;BSS;autosomal dominant macrothrombocytopenia;BSS;inherited thrombocytopenia;platelet macrocytosis
-11801399,"alpha-, beta-,gamma-, delta-sarcoglycan;gamma-sarcoglycan;gamma-sarcoglycan;delta-sarcoglycan;gamma-sarcoglycan;gamma-sarcoglycan;gamma-sarcoglycan",Leu90Ser;Cys283Tyr;del521T,gamma-sarcoglycanopathy;LGMD 2C;recessive limb-girdle muscular dystrophy
-18331997,PPARGC1A;PPARGC1A;PPARGC1A;PPARGC1A,Thr394Thr;Gly482Ser;rs2970847;Thr394Thr;rs8192678;Gly482Ser;Thr394Thr;Gly482Ser;Thr394Thr;Thr394Thr;Ser482;Gly482Ser,type 2 diabetes;type 2 diabetes;type 2 diabetes;type 2 diabetes;type 2 diabetes
-18940664,vitamin D receptor;vitamin D receptor;VDR;beta-catenin;TCF;VDR;SRC-1;SRC-1;VDR;VDR,,colon cancer
-18983494,lipoprotein associated phospholipase A2;lipoprotein-associated phospholipase A2;LpPLA2;LpPLA2;PLA2G7;LpPLA2;LpPLA2;LpPLA2;LpPLA2,-1357G>A;-403T>C;Arg92His;Ile198Thr;Ala379Val;-403C,cardiovascular disease;cardiovascular disease;atherogenic;coronary artery disease;CAD;CAD;CAD;cardiovascular disease
-20144150,,,infection;cytotoxicity;infection
+1680373,,6410 G----C;Gly12----Ala;31261 delta T;stop codon 31;31260 C----G;Thr380----Ser;31122 C----A;Ala34----Asp;G----A;Arg-4----Gln,haemophilia B;haemophilia B;haemophilia B
+8627655,UL97;UL97;UL54;UL97;UL54,Met-460 --> Ile;Ala-594 --> Val;Leu595 --> Ser;Val-715 --> Met;Thr-700 --> Ala,AIDS;AIDS
+8877771,HERG;ether-a-gogo-related gene;HERG;HERG;HERG,G to A transition at position 1681;alanine at codon 561;Ala561Thr;Ala561Thr,T;long QT syndrome;Long QT syndrome;LQT;inherited disorder;sudden death;cardiac arrhythmia;LQT syndrome;LQT2;cardiac events
+10679599,,Met(528) and Met(552) for Val,human immunodeficiency virus co-infected;Hepatitis B;HBe;hepatitis B viremia
+11317671,UCP1;UCP1;UCP1;UCP1;UCP1;UCP1,Met229-->Leu;A-->C;Met229-->Leu;Leu229;A-->C;Met229-->Leu,type II diabetes mellitus;Type II (non-insulin-dependent) diabetes mellitus;Type II diabetes;Type II diabetic;diabetic;Type II diabetic;diabetes
+19067792,GPIb alpha;GPIb alpha;CD34;CD45;fibrinogen;von Willebrand factor;alpha-tubulin;GPIb alpha;GPIb alpha,Ala156Val,Bernard-Soulier syndrome;inherited platelet disorders;thrombocytopenia;platelet macrocytosis;macrothrombocytopenia
+19258292,TSC2;TSC1;TSC2;TSC2;TSC2,p.Ala460Thr,tuberous sclerosis complex;leptomeningeal angiomatosis;Tuberous sclerosis complex;autosomal dominant disorder;multiple organ system hamartomas;vertigo;headache;seizures;mental retardation;neurologic sequelae;pial angiomatosis of;calcifications;Sturge-Weber syndrome;renal angiomyolipomas;hypomelanotic macule;cortical tuberi;tuberous sclerosis;leptomeningeal angiomatosis
 20391780,capsid;C;NS3;NS1,deletion of amino acid 111;Ser1534 --> Phe;Ser917 --> Gly,infection;tick;infection;infection
 21714469,thyrotropin receptor;thyrotropin receptor;TSHR;TSHR;TSHR;TSHR;TSHR;TSHR,R450H;D727E;CGC --> CAC;Arg450His;GAC --> GAG;Asp727Glu;R450H;D727E;R450H;R450H,congenital hypothyroidism;Congenital hypothyroidism;congenital endocrine disorder;congenital hypothyroidism;hypoplasic gland;subclinical hypothyroidism
-22156497,granzyme H;granzyme H;GzmH;GzmH;GzmH;GzmH;GzmH;GzmH;GzmH.;GzmH,D102N;Arg(39)-Lys,tumors;cytotoxic
-22391550,,Tyr224His;His252Arg;Tyr224His;His252Arg,colonic adenocarcinoma
-22573334,,,viral infection
+21933849,GPIbalpha;GPIbalpha;GPIbbeta;GPIX;GPIBA,Ala156Val;c.515C>T,inherited thrombocytopenia;Bernard-Soulier syndrome;inherited thrombocytopenia;recessive disease;macrothrombocytopenia;thrombocytopenia;thrombocytopenia;Bernard-Soulier syndrome;thrombocytopenia;bleeding tendency;platelet aggregation;inherited thrombocytopenia
 22665972,S-antigen;S-antigen;SAG;arrestin 1;rhodopsin kinase;GRK1;methylenetetrahydrofolate reductase;MTHFR;SAG;GRK1;SAG;MTHFR;SAG;SAG,p.Glu306*;C677T;c.916G>T;p.Glu306*;C677T;c.916G>T;p.Glu306*,Oguchi disease;congenital stationary night blindness;CSNB;Mizuo-Nakamura phenomenon;Oguchi disease symptom;dural sinus thrombosis;DST;thrombocytopenia;systemic lupus erythematosus;SLE;Oguchi type 1;Oguchi type 2;hyperhomocysteinemia;hyperhomocysteinemia;Oguchi type 1;neurologic and hematological abnormalities
+22798075,glutaredoxin;alpha2;alpha1,,hypoxia
 22835627,angiotensin-converting enzyme;Angiotensin I-converting enzyme;ACE;ACE;ACE;ACE;ACE;ACE;ACE,,hypertension;cardiovascular diseases
-25975359,ADAMTSL4;ADAMTSL4;ADAMTSL4;ADAMTSL4,p. (Ala388Glyfs*8);p. (Arg746His);p. (Gly592Ser);p. (Arg865His),ectopia lentis;ectoplia lentis;EL;connective tissue syndromes;EL;EL;EL;high myopia;EL
-26275670,,,T3SS
-26916334,Tau;Tau;Tau;Tau;Tau;Tau;Tau;Tau;Tau;Tau;Tau;Gfap;Tau;Tau;Thy1.2;Tau,Ala152Thr;A152T;A152T,neuroinflammation;cognitive decline;PSP;AD;neurodegenerative disorders;frontotemporal dementia spectrum disorders;Alzheimer disease;presynaptic failure;neuroinflammatory;neuroinflammation;Alzheimer disease;Deficits in spatial reference memory;neuronal death;tauopathies;neuroinflammation;toxicity
+23706493,MYG1;MYG1;Melanocyte proliferating gene 1;C12orf10;MYG1;MYG1;MYG1;MYG1;MYG1;MYG1;MYG1;MYG1;MYG1;MYG1;MYG1;MYG1;MYG1;MYG1,-119C/G;Arg4Gln;-119C/G;rs1465073;rs1534284;rs1534283;Arg4Gln;-119C/G;4Arg;-119 GG;-119 GG;-119C/G;-119GG,vitiligo;vitiligo;vitiligo;vitiligo;vitiligo;vitiligo;vitiligo;vitiligo;vitiligo;vitiligo;vitiligo;vitiligo
+24849604,KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2,S937D;Aspartate substitution of Thr(934;T934D;S937D;T934A;S937A;T934D;S937D,neurological disorders
+26700101,,,cerebral injury;cerebral injury
 26996808,KEL;KEL;endothelin-converting enzyme-1;KEL,p.Arg447Trp;p.Gly641Arg;p.Ala645Val;p.Gly703Arg;p.Gly263Glu;c.575G>C;p.Arg192Pro,Kmod
+27016457,luteinizing hormone receptor;LHCGR;luteinizing hormone receptor;LHCGR;LHCGR,p.Gln525Ter;p.Arg479Ter;p.Gln170Ter,"46,XY primary amenorrhea;46,XY primary amenorrhea;46,XY primary amenorrhea;46,XY primary amenorrhea"
+27177329,,Asp190Ala;Asp190 by alanine;Asp190Ala;Asp190;Asp190 with alanine,male infertility;cytotoxic
 27344355,ND5;NDUFAF2;POLG,m.3243A>G;m.13513G>A;p.Asp393Asn;c.1399G>A;p.Ala467Thr,Mitochondrial respiratory chain disorders;genetic disorders;Mitochondrial respiratory chain deficiencies;mitochondrial respiratory chain disorders;mitochondrial respiratory chain disorder;MELAS syndrome;metabolic strokes;MELAS;Leigh syndrome;mitochondrial respiratory chain disorder;Leigh syndrome;mitochondrial respiratory chain deficiency;systemic disease;neuromuscular
-27462358,CCM1;CCM1;CCM1;CCM1,c.940_943 del;p.Val314 Asn315delinsThrfsX3;c.535C>T;p.Arg179X,familial cerebral cavernous malformation;Cerebral cavernous malformation;CCM;vascular malformation;CCMs;headache;vomiting;seizure-like movements;CCM lesions;seizure-like movements;cerebral angioma;angiomas;CCMs;CCMs
 28858298,NAMPT;nicotinamide phosphoribosyltransferase;NAMPT;NAMPT;NAMPT;NAMPT;NAMPT;NAMPT;NAMPT;NAMPT,,cancer;cancer
-29192941,carboxylesterase-1;CES1,Arg199/His;Ser75/Asn;Ile49/Val;Arg199/His;Arg199/His,ADHD;Pervasive Developmental Disorder;Pervasive Developmental Disorders;PDDs;Attention Deficit Hyperactivity Disorder;ADHD;PDDs;Mental Retardation;MR;ADHD;PDD;ADHD;Attention Deficit Hyperactivity Disorder;PDD;ADHD;ADHD;ADHD;MR;PDD;ADHD
-29965748,alpha-tubulin,Arg-243-Lys,metabolic;metabolic;metabolic
-30423451,POLG,p.Ala467Thr;p.Trp748Ser;p.Gly848Ser;p.Trp748Ser;p.Trp748Ser,DNA polymerase gamma dysfunction;Infantile Alpers-Huttenlocher syndrome;adulthood ataxia
+28932220,Alpha-Hemolysin;alpha-hemolysin,,bacterial infection;bacterial infections;hemolysis;hemolysis;S. aureus infection
 30822809,beta2GPI;beta2GPI;beta2GPI,,anti-phospholipid syndrome;APS;thrombosis;aPL;lupus anticoagulant;LAC;APS;LAC;thrombosis;aPL;thrombosis
-30926465,rpoB;rpoB;rpoB,Ser315Thr;Ser531Leu;Asp94Gly;A1401G;Leu442Leu;Ser447Phe;Asn499Thr;Ala504Val,Multidrug-resistant tuberculosis;MDR-TB;MDR-TB;MDR-TB;MDR-TB;MDR-TB;XDR-TB;MDR-;XDR-TB
-30998765,angiotensin-converting enzyme;Angiotensin-I converting enzyme;ACE;kallikrein;renin;ACE;ACE;ACE;ACE;ACE;ACE,,cardiovascular system diseases
-31049795,MUTYH,c.849 C > T;rs1232888774,colorectal cancer;colorectal cancer;colorectal cancer;EOCRC;EOCRC;tumor-;MSI;tumors;rectal adenocarcinoma;mucinous;EOCRC;EOCRC;CRC
+31160396,,,HD;HD
+31623211,,serine (Ser) at position 13;S13A,myogenic disorders;muscle dystrophies;myasthenia gravis
 31763672,oviduct-specific glycoprotein;OVGP1;Oviduct-specific glycoprotein;OVGP1;OVGP1;OVGP1;OVGP1;OVGP1;OVGP1,Asp to Phe118;Glu to Leu120,CLPs
 31907281,Apolipoprotein A-I;apoA-I;apoA-I;apoA-I;HDL3;MPO;apoA-I;apoA-I;apoA-II;apoA-I;apoA-II;apoA-IV;apoE.;LDLR;apoA-I;apoA-I;apoA-I;apoA-I;apoA-I;apoA-IV;apoA-II,,atheroma
 31937411,neuroglobin;cytochrome c;Neuroglobin;neuroglobin;neuroglobin;neuroglobin;cytochrome c;neuroglobin;cytochrome c;cytochrome c;neuroglobin;cytochrome c;neuroglobin;cytochrome c;neuroglobin;cytochrome c;neuroglobin;cytochrome c;neuroglobin;cytochrome c;neuroglobin;cytochrome c;neuroglobin;cytochrome c,,neuronal damage
-33017058,,,toxicity
-33392964,SHP2;SHP2;SHP2WT;SHP2WT;SHP2,E69K;E69K;E69K,leukemia;PTP
-33810550,AChE;BChE;AChE;BChE;BChE;AChE;BChE;AChE;BChE,,cytotoxic
-34437424,,Leu615;R203Q;R203Q;Glu522;Asn552;Asn576;Leu615;E522A;N552A;N576A;L615A;L615A;L615A;Y332A;F364A;Leu615,biotoxicity;biotoxicity;toxicity
-34499020,Pin1;Pin1;peptidylprolyl cis-trans isomerase;Pin1;Pin1;Pin1;Pin1,,tumor;tumorigenesis;cancer;cancer
-34919466,TSHR;TSHR;TSHR;TSHR;TSHR;TSHR,Arg450His,Congenital Hypothyroidism;Primary congenital hypothyroidism;endocrine and metabolic disease;hypothyroidism
+32093544,SRPK1;ASF;SF2;SRPK1;ASF;SF2;SRPK1;ASF;SF2;SRPK1;ASF;SF2;SRPK1;SRPK1;ASF;SF2;ASF;SF2;SRPK1;SRPK1;ASF;SF2;SRPK1;SRPK1;ASF;SF2;SRPK1;ASF;SF2;SRPK1,,carcinomas;cancers;cancer
+33105479,PRUNE1;PRUNE1;PRUNE1;Prune1;PRUNE1,c.383G > A;p.Arg128Gln;c.520G > T;p.Gly174*,"NMIHBA;Neurodevelopmental disorder with microcephaly, hypotonia and variable brain anomalies;NMIHBA;autosomal recessive neurodevelopmental and neurodegenerative disorder;developmental delay;intellectual disability;Microcephaly;cortical atrophy;cerebellar hypoplasia;myelination;NMIHBA;lethality;NMIHBA"
+33376515,WNK4;WNK4;WNK4;WNK4;WNK4;WNK4;WNK4;WNK4;WNK4;WNK4,,hypertension
+33823093,glutaminyl cyclase;glutaminyl cyclase;beta amyloid peptide,,chronic periodontitis;Alzheimer's disease
+34338914,SHP2;SHP2;SHP2;SHP2;SHP2;SHP2;SHP2;SHP2,,cancer diseases;cancer
+34369509,HDAC2;histone deacetylase 2;HDAC2;HDAC2;HDAC8;HDAC2;HDAC8;HDAC2;HDAC8;HDAC2/8;HDAC2;HDAC8;HDAC2;HDAC8;HDAC8;HDAC2;HDAC8;HDAC2,,liver cancer;liver cancer;liver cancer
+35038180,E1alpha;E1beta;PDHA1;PDHA1;PDHB;PDHA1;PDHB;E1alpha;E1beta;E1alpha;E1alpha;E1alpha;E1beta;E1alpha;E1alpha;E1alpha;E1alpha,,pyruvate dehydrogenase complex (PDC) deficiency;Pyruvate dehydrogenase complex deficiency;lactic acidemia
 35114279,GJB2;GJB2;SLC26A4;OTOF;OTOF;SLC26A4;GJB2;COL4A4;GJB2;EYA1;GJB2;COL4A5;GJB2;DFNA5,c.235delC;c.4691G > A;p.Trp1564Ter;c.3928_3930dup;p.Lys1310dup;c.1349G > A;p.Arg450His;c.456 T > G;p.Asn152Lys;c.1595G > T;p.Ser532Ile;c.2359G > T;p.Glu787Ter,non-syndromic severe-profound hearing loss;Hereditary hearing loss;non-syndromic deafness;hearing loss;deafness;GSDME;OTOA;hearing loss
 35350396,POLG;POLG;POLG;POLG;POLG;POLG,p.Thr251Ile;p.Pro587Leu;p.Ala467Thr,Neuropathic Pain;Related Disease;mitochondrial;chronic progressive external ophthalmoplegia;CPEO;mitochondrial;mitochondrial;genetic defects;mitochondrial;CPEO;Chronic progressive external ophthalmoplegia;CPEO;genetic defects;CPEO;Kearns Sayre syndrome;mitochondrial;CPEO;CPEO;genetic defects;mitochondrial;CPEO;mitochondrial;genetic defect;polyneuropathy;neuropathic pain;genetic defects;mitochondrial;mitochondrial DNA abnormalities;mitochondrial;mitochondrial;mitochondrial;CPEO;polyneuropathy;neuropathic pain;related disease
-35912509,endothelin-2;EDN2;endothelin 2;EDN2;edn2,c.149G>A;p.Cys50Tyr;p.Cys50Tyr,growth and respiratory lethal syndrome;genetic defects;growth retardation;respiratory alterations;juvenile lethality;inherited syndrome;growth and respiratory lethal syndrome;EDN2-associated hereditary disease
-36026508,PfHT1;hexose transporter 1;PfHT1;PfHT1;PfHT1;PfHT1;PfHT1;PfHT1;PfHT1;PfHT1;PfHT1 receptor,,malaria;malaria
-36598113,PEBP1;phosphatidyl-ethanolamine binding protein1;PEBP1;PEBP1;PEBP1;Raf-1;NF-kappaB;PEBP1;IKKbeta;IkappaBalpha;NF-kappaB;NF-kappaB;PEBP1;PEBP1;PEBP1,,Ulcerative colitis;UC;inflammatory disease of the colon;UC;inflammatory;inflammation;UC
+36104373,Nicotinamide N-methyltransferase;Nicotinamide N-methyltransferase;NNMT;NNMT;NNMT;NNMT;NNMT;NNMT,,metabolic disorders;metabolic disorders;obese;diabetes;obesity;metabolic disorders
 36678592,Acetylcholinesterase;Butyrylcholinesterase;acetylcholinesterase;AChE;butyrylcholinesterase;BuChE;cholinesterase;AChE;BuChE;AChE;BuChE;cholinesterase,,Alzheimer's disease;cytotoxicity;cytotoxic;toxicity
-37321371,betaAR;betaAR;betaAR;salt-inducible kinase 3;SIK3;SIK3;SIK;SIK3;RAPTOR;SIK;SIK;Ucp1;Sik3;SIK3;Ucp1;SIK3;Sik3;Ucp1;Pgc1alpha;HDAC4;PGC1alpha;betaAR;PGC1alpha;SIK;SIK3,,obesity;cardiometabolic disease
-37346832,thyroid-stimulating hormone receptor,p.Arg109Gln;p.Arg450His;p.Arg109Gln;p.Arg450His;p.Arg109Gln,congenital hypothyroidism;Congenital hypothyroidism;endocrine disorder;TSH resistance
-37776195,DYRK2;p53;DYRK2;p53;DYRK2;DYRK2;DYRK2;p53;p53;p53;DYRK2;p53;p53;DYRK2;p53;DYRK2;p53;p53;DYRK2,,colorectal cancer;colorectal cancer;colorectal cancer;colorectal cancer;colorectal cancer;colorectal cancer;colorectal cancer;colorectal cancer;colorectal cancer
-38072526,CYP6A14;CYP6A14;CYP6A14;CYP6A14;CYP6A14;CYP6A14,,flonicamid
+37179472,DRG1;Developmentally-regulated GTP-binding protein 1;DRG1;DRG1;DRG1;DRG1;DRG1;DRG1;ZC3H15;DRG1;Drg1;DRG1,p.Gly54*;p.Arg140*;p.Lys263*;p.Asn248Phe,Neurodevelopmental Disorder;neurodevelopmental disorder;developmental delay;primary microcephaly;short stature;craniofacial anomalies;lethality;Mendelian disorder;DRG1 deficiency
+37342083,A20;TNFAIP3;TNFAIP3;A20;TNFAIP3;TNFAIP3;A20;A20;A20;A20;A20;NF-kappaB;TRAF6;A20,p.(Leu236Pro);Leu236Pro;Leu275Pro;Leu236Pro;Glu192Lys;Cys243Tyr;Leu236,autoinflammation;HA20;autoinflammatory disease;HA20;ovarian tumor;OTU;OTU;OTU
+37726403,PHGDH;p53;phosphoglycerate dehydrogenase;PHGDH;p53;PHGDH;p53;AXIN;HIPK2;p53;p53;HIPK2;p53;PHGDH;p53;p53;PHGDH;PHGDH;Trp53;PHGDH;p53,R135W;V261M;T57A;T78A;T57A;R135W,hepatocellular carcinoma;HCC;HCC;HCC;HCC
 38095323,,,constipation;addiction
 38153123,ISG20L2;ISG20L2;ISG20L2;ISG20L2;DEDD;ISG20L2;ISG20L2;ISG20L2;ISG20L2;ISG20L2;ISG20L2,,colon adenocarcinoma;colon cancer;colon adenocarcinoma
-38224024,,Ala303Thr,pertussis
-38245927,Tim-3;Hepatitis A virus cellular receptor 2;Galectin-9;Galectin-9;Tim-3;galectin-9;Tim-3;galectin-9;Tim-3;Tim-3;galectin 9,,melanoma;gastrointestinal nematode;inflammatory diseases
-38251755,Pin1;Pin1;Pin1;Pin1;Pin1;Pin1;Pin1;Pin1,,degenerative and neoplastic diseases;cancers;tumors;tumor;cancer
+39231970,YOD1;NLRP3,,MRSA;sepsis;DIC
 39310545,Rhizophorin,,measles;rubella;rubella capsid;rubella capsid;rubella capsid
-39358506,TET2;tet methylcytosine dioxygenase 2;TET2;TET2;TET2;TET2;MBD6;histone H2A;TET2;MBD6;TET2;TET2;MBD6;TET2;Tet2;TET2;MBD6;TET2,,leukaemogenesis;myeloid malignancy;leukaemic;leukaemia;leukaemic;malignancies
-39386079,,,proteasome
-39500555,HSPD1;HSP60;HSPD1;HSP60;HSPD1;HSPD1;HSPD1;HSP60;HSPD1,Ala536;p.Ala536Pro;p.Ala536Val;Leu47Val,hypomyelinating leukodystrophy;Hypomyelinating leukodystrophies;genetic disorders;myelin deficiency;developmental delay;neuroregression;nystagmus;central hypotonia;spasticity;ataxia;hereditary spastic paraplegia;MIM 605280;hypomyelinating leukodystrophy 4;MIM 612233;hypomyelinating leukodystrophy;hypomyelinating disorder;nystagmus;tremor;hypotonia;spasticity;ataxia;neuroregression;hypomyelination
-39574220,,,Hypoparathyroidism;parathyroid hormone (PTH) deficiency;impaired mineral metabolism;Treatment-emergent adverse events;TEAEs;TEAEs;TEAE
+39551437,,,Ancylostoma;canine hookworm infections;hookworm infections
 1400429,von Willebrand factor;glycoprotein Ib;von Willebrand factor;vWF;glycoprotein Ib;GPIb;vWF;GPIb;vWF;GPIb;vWF;GPIb;GPIb;vWF;vWF;GPIb;vWF;vWF;GPIb;vWF;vWF,Arg578-->Gln;Arg578-->Gln;R578Q;R578Q;Arg578-->Gln;R578Q;Arg543-->Trp;Arg545-->Cys;Val553-->Met;Arg578-->Gln;R578Q;Arg578-->Gln;Arg578,type IIB von Willebrand disease;type IIB von Willebrand disease;vWD;type IIB vWD;type IIB vWD;type IIB vWD;type IIB vWD
-7909449,von Willebrand factor,Val553-->Met,type-IIB von Willebrand's disease;type-IIB von Willebrand's disease
-10679599,,Met(528) and Met(552) for Val,human immunodeficiency virus co-infected;Hepatitis B;HBe;hepatitis B viremia
+1672694,GpIb;von Willebrand Factor;vWF;GpIb;vWF;GpIb,Arg543----Trp;Arg545----Cys;Val553----Met;Arg578----Gln;Arg543----Trp,type IIB von Willebrand disease;Type IIB von Willebrand Disease;vWD;Type IIB vWD;Type IIB vWD;Type IIB vWD
+10097173,beta amyloid precursor protein;beta amyloid precursor protein;Abeta;Abeta42;Abeta;Abeta;Abeta,Val-715 --> Met;V715M;V715M;V715M,Alzheimer's disease;Alzheimer's disease;AD;familial AD-;familial AD
 10714584,dystrophin;alpha-sarcoglycan;gamma-sarcoglycan;gamma-sarcoglycan;gamma-sarcoglycan;gamma-sarcoglycan;gamma-sarcoglycan;gamma-sarcoglycan;gamma-sarcoglycan,glycine to CGC;Cys283Tyr;Leu193Ser,gamma-sarcoglycanopathy;limb-girdle muscular dystrophy;inability to climb;abnormal gait;myopathic changes;necrosis;gamma-sarcoglycanopathy;gamma-sarcoglycanopathy
-12634240,TAP1;TAP2;TAP1;TAP2;TAP1;TAP2;TAP2;TAP2;TAP1;TAP2;TAP2;TAP1;TAP2;TAP2,,systemic lupus erythematosus;systemic lupus erythematosus;SLE;SLE;SLE;SLE
-12733052,corticosteroid binding globulin;Corticosteroid binding globulin;CBG;thyroxin binding globulin;TBG;CBG;CBG;CBG;CBG;CBG;alpha1-antitrypsin;alpha1-antichymotrypsin;alpha1-antitrypsin;alpha1-antichymotrypsin,,inflammation;inflammation;inflammatory
-15863669,PGC-1beta;Peroxisome proliferator activated receptor-gamma coactivator-1beta;PGC-1beta;PGC-1alpha;PGC-1alpha;PPARGC1B;PGC-1beta,Ala203Pro;Val279Ile;203Pro;Ala203,obesity;obesity;type 2 diabetes;obesity;obese;overweight;obese;type 2 diabetes;type 2 diabetes;obesity
-21933849,GPIbalpha;GPIbalpha;GPIbbeta;GPIX;GPIBA,Ala156Val;c.515C>T,inherited thrombocytopenia;Bernard-Soulier syndrome;inherited thrombocytopenia;recessive disease;macrothrombocytopenia;thrombocytopenia;thrombocytopenia;Bernard-Soulier syndrome;thrombocytopenia;bleeding tendency;platelet aggregation;inherited thrombocytopenia
+11222377,GPIbalpha;GPIbalpha,Ala156Val;Ala156Val,Autosomal dominant macrothrombocytopenia;Bernard-Soulier syndrome;autosomal dominant macrothrombocytopenia;Bernard-Soulier syndrome;BSS;BSS;autosomal dominant macrothrombocytopenia;BSS;autosomal dominant macrothrombocytopenia;BSS;inherited thrombocytopenia;platelet macrocytosis
+11801399,"alpha-, beta-,gamma-, delta-sarcoglycan;gamma-sarcoglycan;gamma-sarcoglycan;delta-sarcoglycan;gamma-sarcoglycan;gamma-sarcoglycan;gamma-sarcoglycan",Leu90Ser;Cys283Tyr;del521T,gamma-sarcoglycanopathy;LGMD 2C;recessive limb-girdle muscular dystrophy
+20144150,,,infection;cytotoxicity;infection
+21692854,prothrombin;prothrombin,p.Arg4Gln;p.Arg220Pro,factor II deficiency;Prothrombin deficiency;autosomal recessive disorder;bleeding tendency;convulsions;intracerebral hemorrhage;hypoprothrombinemia;bleeding;bleeding disorders
+22156497,granzyme H;granzyme H;GzmH;GzmH;GzmH;GzmH;GzmH;GzmH;GzmH.;GzmH,D102N;Arg(39)-Lys,tumors;cytotoxic
+22291974,glucokinase;Glucokinase;GK;insulin;GK;GCK;insulin;GK;GK;GK;GK;glucokinase;GK,p.Ile130Thr;p.Asp205His;p.Gly223Ser;p.His416Arg;p.Ala449Thr;p.Ile130Thr;p.Asp205His;p.Gly223Ser;p.His416Arg;p.Ala449Thr,MODY2;familial;fasting hyperglycaemia;Maturity Onset Diabetes of the Young type 2;MODY2
 22464213,CETP;LIPC;LIPG;CETP;LIPC;LIPG;cholesteryl ester transfer protein;hepatic lipase;endothelial lipase;CETP;LIPC;LIPG;CETP;LIPC;CETP;CETP;CETP;LIPC;CETP;LIPG;CETP;LIPC;LIPG,p.Val411ArgfsX6;p.Gly141Ser;p.Val173Met;p.Asp459Gly;p.Asp459Gly,hyperalphalipoproteinemia;hyperalphalipoproteinemia;HALP;HALP;HALP;HALP;HALP;HALP
-23816342,COQ2;CoQ2;COQ2;CoQ2,c.326G > A;p.Ser109Asn,myoclonic epilepsy;hypertrophic cardiomyopathy;nephrotic syndrome;CoQ10 deficiency;Primary coenzyme Q10;autosomal recessive disorders;nephrotic syndrome;myoclonic seizures;hypertrophic cardiomyopathy;nephrotic syndrome;myoclonic seizures;hypertrophic cardiomyopathy;CoQ10;proteinuria;CoQ10;focal segmental glomerulosclerosis;CoQ10;myoclonic epilepsy;hypertrophic cardiomyopathy;nephrotic syndrome
+22573334,,,viral infection
+23953133,adenosine A3 receptor;serotonin transporter;5-HT transporter;SERT;SERT;SERT;adenosine A3 receptor;A3AR;SERT;protein kinase G;PKG;SERT;A3AR;ADORA3;A3AR;SERT;A3AR;A3AR;A3AR;A3AR;SERT;SERT;A3AR;SERT;SERT;SERT,Leu90Val;Val171Ile;Leu90Val;Val90;Ile171,autism;autism spectrum disorder;ASD;ASD;ASD;ASD;ASD;ASD;ASD;ASD;ASD;ASD
 24721129,,,dehydration
-24849604,KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2;KCC2,S937D;Aspartate substitution of Thr(934;T934D;S937D;T934A;S937A;T934D;S937D,neurological disorders
 25124065,GALT;galactose-1-phosphate uridyltransferase;GALT;GALT;GALT;GALT;GALT;GALT;GALT;GALT,p.Ala101Asp;p.Tyr165His;p.Pro257Thr;c.826_827delinsAA;p.Ala276Asn;p.Asn96Serfs*5;c.378-1G > C;c.940A > G;c.507G > C;p.Gln169His;p.Gln188Arg;p.Ser135Leu;p.Lys285Asn;p.Leu195Pro;p.Tyr209Cys;p.Phe171Ser;c.253-2A > G,Classic galactosemia;OMIM #230400;autosomal recessive metabolic disorder;deficiency of the galactose-1-phosphate uridyltransferase;galactosemia;GALT deficiency
-25449714,Glucagon-like peptide 1 receptor;GLP1R;Glucagon-like peptide 1 receptor;GLP1R;insulin;insulin;GLP1R;GLP1R,rs6923761;rs1042044;rs1042044;rs6923761,weight gain
 25837856,ATase2;ATase2;ATase2;ATase2;ATase2;PEP;PEP;ATase2;PEP,Ile-155 residue to Asn,growth retardation;chlorotic
+25916755,,,cancer
+25975359,ADAMTSL4;ADAMTSL4;ADAMTSL4;ADAMTSL4,p. (Ala388Glyfs*8);p. (Arg746His);p. (Gly592Ser);p. (Arg865His),ectopia lentis;ectoplia lentis;EL;connective tissue syndromes;EL;EL;EL;high myopia;EL
+26170631,DAOA;D-amino acid oxidase activator;DAOA;DAOA;DAOA,,schizophrenia;Schizophrenia;SZ;mental and heritable disorder;neurophysiological impairment;neuropsychological abnormalities;neurological disorders;SZ;SZ
+26916334,Tau;Tau;Tau;Tau;Tau;Tau;Tau;Tau;Tau;Tau;Tau;Gfap;Tau;Tau;Thy1.2;Tau,Ala152Thr;A152T;A152T,neuroinflammation;cognitive decline;PSP;AD;neurodegenerative disorders;frontotemporal dementia spectrum disorders;Alzheimer disease;presynaptic failure;neuroinflammatory;neuroinflammation;Alzheimer disease;Deficits in spatial reference memory;neuronal death;tauopathies;neuroinflammation;toxicity
 27076639,NS5;nonstructural protein 5;NS5;NS5;NS5;NS5;nonstructural protein 5;NS5;NS5;NS5,,Dengue Virus;Infections;infections
-27185633,glucokinase;GCK;GCK;WFS1;SLC19A2;SH2B1;SERPINB4;RFX6;GATA6;GCK;GCK;GCK,p.Leu77Arg;p.Val101Met;p.Leu77Arg;p.Leu77Arg;p.Val101Met;p.Val101Met;p.Leu77Arg;p.Val101Met,maturity onset diabetes of the young;MODY;maturity onset diabetes of the young;MODY;MODY;MODY;MODY;MODY;diabetic;diabetic;MODY;MODY
-27554452,POLG;polymerase gamma;POLG;POLG;POLG;POLG;POLG;POLG;POLG,p.Ala467Thr;p.Trp748Ser;p.Gly848Ser,Epilepsy;epilepsy;seizure;epilepsy;seizure;convulsive;myoclonus;occipital seizures;epilepsy;hepatic involvement;mitochondrial disease
-28754362,A3G,,AIDS
-28932220,Alpha-Hemolysin;alpha-hemolysin,,bacterial infection;bacterial infections;hemolysis;hemolysis;S. aureus infection
-29372643,beta-actin;ACTB;ACTB,c.484A> G;p.Thr162Ala,cerebral malformations;epilepsy;Baraitser-Winter cerebrofrontofacial syndrome;BWCFF;autosomal dominant genetic disorder;brain abnormalities;seizures;BWCFF;left ptosis;hypertelorism;hypotonia;seizures;psychomotor development delay;cerebral cortical malformations;refractory epilepsy;BWCFF
-29867496,Androgen Receptor;androgen receptor;AR;AR;AR;AR;AR;AR;AR;AR;AR;AR;AR;AR;AR;AR;AR,,type AR
-30007050,NFATC1;CRELD1;NFATC1;TBX1;NFATC1;NFATC1;NFATC1,p.(Ala367Val);p.(Val210Met);p.(Ala696Thr);Pro86Leu,atrioventricular septal defect;Atrioventricular septal defect;AVSD;Down syndrome;heterotaxy;cardiac defect;AVSD;AVSD;AVSD;heterotaxy;AVSD;AVSD;heterotaxy;AVSD;heterotaxy;oculo-auriculo-vertebral spectrum;OAVS;AVSD;heterotaxy;OAVS;cardiac looping defects;heterotaxy;AVSD
-31623211,,serine (Ser) at position 13;S13A,myogenic disorders;muscle dystrophies;myasthenia gravis
+28258408,VP2;VP2;3D9;MAb 3D9;VP2;MAb 3D9;MAb 3D9;VP2,V90A;Val90,Foot-and-mouth disease;FMD;infectious disease
+28394649,ADAMTSL4;ADAMTSL4;P3H2;LEPREL1;ADAMTSL4;P3H2;ADAMTSL4;ADAMTSL4;ADAMTSL4;Thrombospondin1;TSP1;P3H2;ADAMTSL4,c.2237G>A;p.(Arg746His);c.2237G>A;p.(Arg746His);Arg746His,ectopia lentis;ectopia lentis;EL;Marfanoid;Marfan syndrome;MFS;MFS;EL;EL;ectopia lentis
+29588995,POLG;POLG;POLG,p.Ala467Thr,epilepsia partialis continua;mitochondrial disease;status epilepticus;mitochondrial disease;epilepsia partialis continua;metabolic stroke;seizures;seizures;seizures;cognitive deficit;focal motor seizures;mitochondrial disease
+29932788,HDAC2;Histone deacetylase 2;HDAC2;HDAC1;HDAC2;HDAC3;HDAC8;HDAC2;HDAC2,,Alzheimer's disease;Alzheimer's disease
+30423451,POLG,p.Ala467Thr;p.Trp748Ser;p.Gly848Ser;p.Trp748Ser;p.Trp748Ser,DNA polymerase gamma dysfunction;Infantile Alpers-Huttenlocher syndrome;adulthood ataxia
+30926465,rpoB;rpoB;rpoB,Ser315Thr;Ser531Leu;Asp94Gly;A1401G;Leu442Leu;Ser447Phe;Asn499Thr;Ala504Val,Multidrug-resistant tuberculosis;MDR-TB;MDR-TB;MDR-TB;MDR-TB;MDR-TB;XDR-TB;MDR-;XDR-TB
+30998765,angiotensin-converting enzyme;Angiotensin-I converting enzyme;ACE;kallikrein;renin;ACE;ACE;ACE;ACE;ACE;ACE,,cardiovascular system diseases
+31049795,MUTYH,c.849 C > T;rs1232888774,colorectal cancer;colorectal cancer;colorectal cancer;EOCRC;EOCRC;tumor-;MSI;tumors;rectal adenocarcinoma;mucinous;EOCRC;EOCRC;CRC
+31078727,CPV-2a;CPV-2c,Pro580Thr;Tyr584His,hemorrhagic enteritis;myocarditis;infection;CPV-2c
 32010610,CRP;BCR;ABL1;ETV6;RUNX1;MLL;SPINK5;NUP214;JAK2;IL17RC;ACTN2;TRPV3;COL7A1;JAK2,p.Cys510*;p.Arg815Gln;p.Arg683Gly;p.Ala303Thr;p.Gly1091Arg;p.Pro17245Leu;p.Ile143Leu;p.Arg729*;p.Glu2842fs,Acute Lymphoblastic Leukemia;Netherton Syndrome;acute lymphoblastic leukemia;Netherton syndrome;NS;NS;acute leukemia;anemia;leukocytosis;thrombocytopenia;ichthyosiform erythroderma;CNS3;skin toxicity;WHO;adverse drug reactions;skin toxicity;WHO;toxicities;CNS3;skin lesions;NS;Ph-like ALL;NS
 32190547,Lipase maturation factor 1;lipoprotein lipase;LPL;LPL;LPL;LPL;LPL,Gly36Asp;p.(Pro562Arg);p.(Thr143Met);p.(Asn249Ser);p.(Ala287Val);p.(Met346Val);p.(Thr395Ile);p.(Gly410Arg);p.(Asp433Asn);p.(Asp491Asn);p.(Asn501Tyr);p.(Ala504Val);p.(Arg523His);Leu563Arg;Gly36Asp;p.(Asn249Ser);p.(Ala287Val);p.(Asn501Tyr);p.(Pro562Arg);p.(Leu563Arg),hypertriglyceridemia;hypertriglyceridemia;HTG;chylomicronemia;acute pancreatitis;HTG;HTG;HTG
 32344654,,,hemorrhagic fever
-32729419,Dihydrofolate Reductase;dihydrofolatereductase;pfDHFR;pfDHFR;pfDHFR;ASP54;ILE14;LEU164;SER108;ASN108;ARG122;ASP58,,malaria infection
-33027904,,Phe397Leu;Phe397Leu;Ala448Thr;Leu393Phe;Ala448Thr;Ala448Thr;Val444 Ile,dermatophytoses
-33222095,Adenosine Receptors A1 and A2; AR; AR; AR,A2A;A2A;A2A;A2A;A2A,Parkinson's Disease;Parkinson's disease;PD
 33226073,MEK2;mitogen-activated protein kinase kinase 2;MEK2;ERK1/2;MEK2;MEK2;MEK2;OGT;O-GlcNAc;MEK2;MEK2;MEK2;ERK1/2;MEK2;MEK2,,breast cancer;cancers;tumor;breast cancer;tumorigenesis;tumor
 33244035,,,infection
+33637956,ELAVL1,,bacterial infection;bacterial infection
+33810550,AChE;BChE;AChE;BChE;BChE;AChE;BChE;AChE;BChE,,cytotoxic
 33989636,TRIM7;glycogenin-1;E3 ubiquitin ligase;glycogenin-1;GN1;TRIM7;TRIM7;TRIM7;GN1;GN1;GN1,,cancer;atherosclerosis
+34041263,AVPdb,,SARS-CoV-2
 34328988,G protein-coupled estrogen receptor;estrogen receptor;GPER;GPER;GPER;GPER;GPER;GPER;G protein-coupled receptor;GPER,,toxicity
+35237305,APOC3;APOC3;APOA5,c.11G > A;Arg4Gln;c.*40C > G;c.*158T > C;c.162-43G > A;c.-3A > G,Hypertriglyceridemia;Acute Lymphoblastic Leukaemia;acute lymphoblastic leukaemia;hepatotoxicity;pancreatitis;venous thrombosis;hypersensitivity reactions;hypertriglyceridemia;hypertriglyceridemia;acute lymphoblastic leukaemia;hypertriglyceridemia
 35547122,,,cytotoxicity;cytotoxic;hepatoblastoma
+36026508,PfHT1;hexose transporter 1;PfHT1;PfHT1;PfHT1;PfHT1;PfHT1;PfHT1;PfHT1;PfHT1;PfHT1 receptor,,malaria;malaria
 36574689,KIF5A;alpha/beta-tubulin,,HSP disease;hereditary spastic paraplegia disease;HSP;neurodegenerative disease;HSP;HSP disease;HSP disease
-37141437,"PACS1;PACS1;PACS1;PACS1;GGA3;Golgi-associated, gamma-adaptin ear-containing, ARF-binding protein 3;PACS1;GGA3;PACS1",755C > T;p.(Ser252Phe),syndromic intellectual disability;PACS1-neurodevelopmental disorder;PACS1-NDD;PACS1-NDD;syndromic intellectual disability;syndromic intellectual disability;PACS1-NDD;PACS1-NDD;syndromic intellectual disability
-37495854,thrombin;Thrombin;thrombin;thrombin;thrombin;thrombin;thrombin;thrombin;thrombin;thrombin;thrombin,,blood coagulation
-37631011,,,Cancer
-38197596,serum albumin;Serum albumin,,poisoning;toxicity
+36598113,PEBP1;phosphatidyl-ethanolamine binding protein1;PEBP1;PEBP1;PEBP1;Raf-1;NF-kappaB;PEBP1;IKKbeta;IkappaBalpha;NF-kappaB;NF-kappaB;PEBP1;PEBP1;PEBP1,,Ulcerative colitis;UC;inflammatory disease of the colon;UC;inflammatory;inflammation;UC
+37318002,Mpro;Mpro;IL-1;IL-6;TNF-;Mpro;Mpro;GLn192;Mpro,,COVID-19;COVID-19
+37336512,,c.715C>T;p.Arg239Ter;c.799C>T;p.Arg267Ter;c.1584_1587del;c.403_404delGA;c.1511-28_1511-2del;c.715C>T;p.Arg239Ter,Choroideremia;choroideremia;choroideremia;retinitis pigmentosa;RP;CHM;pigmented lesions;retinal tubulations;ring scotoma;choroideremia;CHM
+37346832,thyroid-stimulating hormone receptor,p.Arg109Gln;p.Arg450His;p.Arg109Gln;p.Arg450His;p.Arg109Gln,congenital hypothyroidism;Congenital hypothyroidism;endocrine disorder;TSH resistance
+37368488,LRP1;Low Density Lipoprotein Receptor-related Protein-1;LRP1;PrPC;PrPC;LRP1;PrPC;PrPC;PrPC;Prnp;ERK1/2;LRP1;PrPC;LRP1;LRP1;PrPC;LRP1,Lys100 and Lys103 into Ala;Lys105 and Lys109 were converted into Ala,inflammatory
+37776195,DYRK2;p53;DYRK2;p53;DYRK2;DYRK2;DYRK2;p53;p53;p53;DYRK2;p53;p53;DYRK2;p53;DYRK2;p53;p53;DYRK2,,colorectal cancer;colorectal cancer;colorectal cancer;colorectal cancer;colorectal cancer;colorectal cancer;colorectal cancer;colorectal cancer;colorectal cancer
+38224024,,Ala303Thr,pertussis
+38245927,Tim-3;Hepatitis A virus cellular receptor 2;Galectin-9;Galectin-9;Tim-3;galectin-9;Tim-3;galectin-9;Tim-3;Tim-3;galectin 9,,melanoma;gastrointestinal nematode;inflammatory diseases
 38342903,NPF1.2;NRT2,,N deficiency;N deficiency;N deficiency
-38590677,,,depression;mental illness;depression;depression;depression;anxiety
-39231970,YOD1;NLRP3,,MRSA;sepsis;DIC
-39343253,oleosin;IgE,,allergy
+39358506,TET2;tet methylcytosine dioxygenase 2;TET2;TET2;TET2;TET2;MBD6;histone H2A;TET2;MBD6;TET2;TET2;MBD6;TET2;Tet2;TET2;MBD6;TET2,,leukaemogenesis;myeloid malignancy;leukaemic;leukaemia;leukaemic;malignancies
+39386079,,,proteasome
+39395800,ACMSD;ACMSD;ACMSD;ACMSD;ACMSD;ACMSD;ACMSD,W194A,mitochondrial diseases;neurodegenerative disorders
 39519019,Cytochrome P 450,,Crimean-Congo Hemorrhagic Fever
-39554985,DHFR,,Malaria;toxicity;malarial
 39623602,CCDC134;coiled-coil domain containing 134;CCDC134;CCDC134;CCDC134;CCDC134;CCDC134;CCDC134,c.2 T > C;p. Met1Thr;c.492G > C;p. Leu164=;c.492G > C;p. Leu164=,Osteogenesis Imperfecta Type XXII;Osteogenesis imperfecta;OI;inherited connective tissue disorders;Online Mendelian Inheritance in Man;OMIM;Type XXII OI;OI 22;OI;non-union fracture;short stature;scoliosis;pelvic tilt;OI 22;OI 22;OI 22
+39654708,3CLpro;3CLpro;3CLpro;3CLpro,,COVID-19 infection;novel coronavirus 2019;nCoV-19;SARS-CoV-2;severe acute respiratory syndrome;SARS;infections;SARS-CoV-2
+7909449,von Willebrand factor,Val553-->Met,type-IIB von Willebrand's disease;type-IIB von Willebrand's disease
+9398715,uncoupling protein 1;uncoupling protein 1;UCP1;insulin;UCP1;UCP1;insulin;UCP1;insulin;UCP1;UCP1;UCP1,,juvenile-onset obesity;juvenile-onset obesity;weight gain;juvenile-onset obesity;juvenile-onset obesity;weight gain;juvenile-onset obesity;obesity;juvenile-onset obesity;obese;weight gain;juvenile-onset obesity;obesity
 9502574,Kir 1.1;ROMK;renin;NKCC2;Kir 1.1;ROMK;Kir 1.1,Ala156Val;Leu220Phe,Bartter syndrome;Bartter syndrome;autosomal recessive renal tubular disorder;hypokalemic metabolic alkalosis;renal salt loss;Bartter syndrome;Bartter syndrome
 11135497,rhodopsin,Ser186Pro;T-->C in codon 186;serine by a proline,autosomal dominant retinitis pigmentosa;ADRP;autosomal dominant retinitis pigmentosa;ADRP
+12634240,TAP1;TAP2;TAP1;TAP2;TAP1;TAP2;TAP2;TAP2;TAP1;TAP2;TAP2;TAP1;TAP2;TAP2,,systemic lupus erythematosus;systemic lupus erythematosus;SLE;SLE;SLE;SLE
+12733052,corticosteroid binding globulin;Corticosteroid binding globulin;CBG;thyroxin binding globulin;TBG;CBG;CBG;CBG;CBG;CBG;alpha1-antitrypsin;alpha1-antichymotrypsin;alpha1-antitrypsin;alpha1-antichymotrypsin,,inflammation;inflammation;inflammatory
+15863669,PGC-1beta;Peroxisome proliferator activated receptor-gamma coactivator-1beta;PGC-1beta;PGC-1alpha;PGC-1alpha;PPARGC1B;PGC-1beta,Ala203Pro;Val279Ile;203Pro;Ala203,obesity;obesity;type 2 diabetes;obesity;obese;overweight;obese;type 2 diabetes;type 2 diabetes;obesity
+18331997,PPARGC1A;PPARGC1A;PPARGC1A;PPARGC1A,Thr394Thr;Gly482Ser;rs2970847;Thr394Thr;rs8192678;Gly482Ser;Thr394Thr;Gly482Ser;Thr394Thr;Thr394Thr;Ser482;Gly482Ser,type 2 diabetes;type 2 diabetes;type 2 diabetes;type 2 diabetes;type 2 diabetes
 18769139,TRPA1;TRPA1;TRPA1;TRPA1;TRPA1;TRPA1;TRPA1;TRPA1;TRPA1;TRPA1;TRPA1,,acute pain;inflammation;inflammatory pain
-19067792,GPIb alpha;GPIb alpha;CD34;CD45;fibrinogen;von Willebrand factor;alpha-tubulin;GPIb alpha;GPIb alpha,Ala156Val,Bernard-Soulier syndrome;inherited platelet disorders;thrombocytopenia;platelet macrocytosis;macrothrombocytopenia
-19258292,TSC2;TSC1;TSC2;TSC2;TSC2,p.Ala460Thr,tuberous sclerosis complex;leptomeningeal angiomatosis;Tuberous sclerosis complex;autosomal dominant disorder;multiple organ system hamartomas;vertigo;headache;seizures;mental retardation;neurologic sequelae;pial angiomatosis of;calcifications;Sturge-Weber syndrome;renal angiomyolipomas;hypomelanotic macule;cortical tuberi;tuberous sclerosis;leptomeningeal angiomatosis
+18940664,vitamin D receptor;vitamin D receptor;VDR;beta-catenin;TCF;VDR;SRC-1;SRC-1;VDR;VDR,,colon cancer
+20377893,MYG1;C12orf10;Myg1;MYG1;Melanocyte proliferating gene 1;C12orf10;MYG1;MYG1;MYG1;MYG1;MYG1;Myg1;MYG1;Myg1;MYG1,-119C;Arg4Gln;-119G;rs1465073;-119C;-119G;-119G;-119G;Arg4Gln;4Gln;-119C/G;Arg4Gln;-119C/G,vitiligo;vitiligo;vitiligo;vitiligo;vitiligo;vitiligo;vitiligo;vitiligo
 21157922,heme oxygenase-1;Heme oxygenase-1;HO-1;HO-1;HO-1;HO-1;HO-1;HO-1;HO-1;HO-1,Gly139His;Gly143His;Ser142His;Gly139His;G139H;Gly143His;G143H;G139H;G143H;Ser142His;Ser142His;G139H;G143H;G143H;Gly139;Gly143;Gly143,HO;anemia;iron overload
 21943958,FUS;TDP43;FUS;TDP-43;FUS;TDP-43;FUS;TDP-43;FUS;FUS;FUS;TDP-43;FUS,P106L;g.22508384C>T;Q179H;N267S;Gly174-Gly175 del GG;g. 4180-4185 delGAGGTG;Gly175-Gly176 ins GG;g. 4185-4186 insGAGGTG,FTD;CBS;amyotrophic lateral sclerosis;ALS;frontotemporal lobar degeneration;FTLD;corticobasal syndrome;CBS;behavioral variant frontotemporal dementia;bvFTD;FTD;CBS;ALS;FTD;FTD;CBS;ALS;FTD;CBS
+22391550,,Tyr224His;His252Arg;Tyr224His;His252Arg,colonic adenocarcinoma
 23286827,D-amino acid oxidase activator;DAOA;D-amino acid oxidase activator;DAOA;D-amino acid oxidase;DAOA;DAOA;DAOA;DAOA;DAOA;DAOA;DAOA;DAOA,,schizophrenia;Schizophrenia;neurodegenerative disorder;neurological disorder;schizophrenia;schizophrenia;schizophrenia
-23319386,FAT4;FAT4;FAT4;FAT4;FAT4,rs1039808;rs12508222;rs1567047;rs1014867;rs1014867;Pro4972Ser;rs1039808;Ala807Val;rs1039808;rs1014867;Pro4972Ser;rs1039808;Ala807Val,esophageal cancer;carcinogenesis;esophageal cancer;esophageal cancer;esophageal cancer;esophageal cancer;esophageal cancer;esophageal cancer;esophageal cancer
+23816342,COQ2;CoQ2;COQ2;CoQ2,c.326G > A;p.Ser109Asn,myoclonic epilepsy;hypertrophic cardiomyopathy;nephrotic syndrome;CoQ10 deficiency;Primary coenzyme Q10;autosomal recessive disorders;nephrotic syndrome;myoclonic seizures;hypertrophic cardiomyopathy;nephrotic syndrome;myoclonic seizures;hypertrophic cardiomyopathy;CoQ10;proteinuria;CoQ10;focal segmental glomerulosclerosis;CoQ10;myoclonic epilepsy;hypertrophic cardiomyopathy;nephrotic syndrome
 24405986,,methionine at position 203;isoleucine at position 257;alanine at position 195,erysipelas;erysipelas infection;erysipelas;death;erysipelas
-25916755,,,cancer
-26603193,phospholipase A(1);pancreatic lipase;HPL;HPL,,membrane dysfunction;hemolytic;hemolysis
-27016457,luteinizing hormone receptor;LHCGR;luteinizing hormone receptor;LHCGR;LHCGR,p.Gln525Ter;p.Arg479Ter;p.Gln170Ter,"46,XY primary amenorrhea;46,XY primary amenorrhea;46,XY primary amenorrhea;46,XY primary amenorrhea"
-27177329,,Asp190Ala;Asp190 by alanine;Asp190Ala;Asp190;Asp190 with alanine,male infertility;cytotoxic
-28394649,ADAMTSL4;ADAMTSL4;P3H2;LEPREL1;ADAMTSL4;P3H2;ADAMTSL4;ADAMTSL4;ADAMTSL4;Thrombospondin1;TSP1;P3H2;ADAMTSL4,c.2237G>A;p.(Arg746His);c.2237G>A;p.(Arg746His);Arg746His,ectopia lentis;ectopia lentis;EL;Marfanoid;Marfan syndrome;MFS;MFS;EL;EL;ectopia lentis
-28456305,,,ALS inhibiting herbicides;ALS;ALS inhibitors;ALS
-28632421,HDAC8;HDAC8;HDAC8;HDAC8,,malignancies;neurological disorders;parasitic diseases
-29588995,POLG;POLG;POLG,p.Ala467Thr,epilepsia partialis continua;mitochondrial disease;status epilepticus;mitochondrial disease;epilepsia partialis continua;metabolic stroke;seizures;seizures;seizures;cognitive deficit;focal motor seizures;mitochondrial disease
-29996803,MMAA;methylmalonyl-CoA mutase;cblA;cblB;cblD;methylmalonyl-CoA epimerase;cblA;cblA;cblA;MMAA;MMAA;cblA;MMAA;MMAA,c.365T>C;c.365T>C;p.L122P;Leu122;Pro122;c.365T>C,methylmalonic acidemia;Methylmalonic acidemia;MMA;autosomal recessive inherited disorder;MMA;MMA;MMA;MMA;MMA;MMA
+27462358,CCM1;CCM1;CCM1;CCM1,c.940_943 del;p.Val314 Asn315delinsThrfsX3;c.535C>T;p.Arg179X,familial cerebral cavernous malformation;Cerebral cavernous malformation;CCM;vascular malformation;CCMs;headache;vomiting;seizure-like movements;CCM lesions;seizure-like movements;cerebral angioma;angiomas;CCMs;CCMs
+27554452,POLG;polymerase gamma;POLG;POLG;POLG;POLG;POLG;POLG;POLG,p.Ala467Thr;p.Trp748Ser;p.Gly848Ser,Epilepsy;epilepsy;seizure;epilepsy;seizure;convulsive;myoclonus;occipital seizures;epilepsy;hepatic involvement;mitochondrial disease
+28343264,,Glu75;E75A;E75L;E75Q;E75L;E75Q;E75L,phenylketonuria;PKU;PKU
+28601781,alpha1;Src;Erk;Src;Src;Erk;Src,Cys244;Cys 454-458-459;Cys244;Cys 454-458-459 or Cys 244-454-458-459;Cys244;Cys 244-454-458-459;Cys454-458-459Ala;Cys244Ala;Cys 244-454-458-459Ala,hypoxic;hypoxic;hypoxia;hypoxia;hypoxic;hypoxia
+29867496,Androgen Receptor;androgen receptor;AR;AR;AR;AR;AR;AR;AR;AR;AR;AR;AR;AR;AR;AR;AR,,type AR
+29965748,alpha-tubulin,Arg-243-Lys,metabolic;metabolic;metabolic
+30007050,NFATC1;CRELD1;NFATC1;TBX1;NFATC1;NFATC1;NFATC1,p.(Ala367Val);p.(Val210Met);p.(Ala696Thr);Pro86Leu,atrioventricular septal defect;Atrioventricular septal defect;AVSD;Down syndrome;heterotaxy;cardiac defect;AVSD;AVSD;AVSD;heterotaxy;AVSD;AVSD;heterotaxy;AVSD;heterotaxy;oculo-auriculo-vertebral spectrum;OAVS;AVSD;heterotaxy;OAVS;cardiac looping defects;heterotaxy;AVSD
 30083029,TSHR;TSH receptor;TSHR;TSHR;TSHR;TSHR;TSHR;TSHR,R109Q;R450H;Arg109Gln;Arg450His;Arg109Gln;Arg450His;Arg450His;Leu653Val,TSH resistance;congenital hypothyroidism;TSH resistance;TSH resistance;TSH resistance;TSH resistance;TSH resistance
+30332739,HDAC2;histone deacetylase (HDAC)2;HDAC2,,hepatocellular carcinoma
 30787317,BCR-ABL;BCR-ABL;BCR-ABL;BCR-ABL;BCR-ABL;BCR-ABL;BCR-ABL,Leu301Ile;p.(Tyr320His);p.(Glu373Asp);p.(Asp381Asn);Val256Gly;p.(Thr315Ile);p.(Gly250Glu);p.(Tyr253His);p.(Phe317Leu);p.(Met351Thr);p.(Glu281*);p.(Tyr393*),chronic myeloid leukemia;chronic myeloid leukemia;CML;Philadelphia positive;Ph+;CML;CML
 30787447,FGFR1;ERK1/2;FGFR1;FGFR1;FGFR1;FGFR1;FGFR1;FGF2;FGFR1;FGF2;FGFR1;ERK1/2;FGFR1;FGFR1;FGFR1;FGFR1,c.1934C>T;Ala645Val;Ala645Val,Hartsfield syndrome;Hartsfield syndrome;HS;developmental disorder;holoprosencephaly;ectrodactyly;HS;HS;HS;HS
-30893314,FTCD;AS3MT;arsenite methyltransferase;FTCD;formiminotransferase cyclodeaminase;FTCD;FTCD;FTCD;AS3MT;FTCD,rs61735836;p.Val101Met;rs61735836,toxicity;Arsenic;skin lesions;arsenic toxicity;cancer;skin lesion;arsenic toxicity;skin lesions;arsenic toxicity
-31078727,CPV-2a;CPV-2c,Pro580Thr;Tyr584His,hemorrhagic enteritis;myocarditis;infection;CPV-2c
-31160396,,,HD;HD
 31560829,elastin;LIMK1,c.160G>T,supravalvular aortic stenosis;Supravalvular aortic stenosis;SVAS;congenital cardiovascular diseases;stenosis of the aorta;circulatory failure;SVAS;SVAS;SVAS;arrhythmia;SVAS;SVAS
 31773495,PRPS1;PRPS1;PRPS1;PRPS1,c.521(exon)G>T;p.(Gly174Val);Val for Gly174;Val174,X-linked gout;hyperuricemia;hyperuricosuria;hyperuricemia;gout;hyperpyrexia;hyperandrogenism;insulin resistance;IR;polycystic ovary syndrome;PCOS;gout;metabolic disorders;hyperpyrexia
-32093544,SRPK1;ASF;SF2;SRPK1;ASF;SF2;SRPK1;ASF;SF2;SRPK1;ASF;SF2;SRPK1;SRPK1;ASF;SF2;ASF;SF2;SRPK1;SRPK1;ASF;SF2;SRPK1;SRPK1;ASF;SF2;SRPK1;ASF;SF2;SRPK1,,carcinomas;cancers;cancer
-33105479,PRUNE1;PRUNE1;PRUNE1;Prune1;PRUNE1,c.383G > A;p.Arg128Gln;c.520G > T;p.Gly174*,"NMIHBA;Neurodevelopmental disorder with microcephaly, hypotonia and variable brain anomalies;NMIHBA;autosomal recessive neurodevelopmental and neurodegenerative disorder;developmental delay;intellectual disability;Microcephaly;cortical atrophy;cerebellar hypoplasia;myelination;NMIHBA;lethality;NMIHBA"
+32729419,Dihydrofolate Reductase;dihydrofolatereductase;pfDHFR;pfDHFR;pfDHFR;ASP54;ILE14;LEU164;SER108;ASN108;ARG122;ASP58,,malaria infection
+33017058,,,toxicity
+33027904,,Phe397Leu;Phe397Leu;Ala448Thr;Leu393Phe;Ala448Thr;Ala448Thr;Val444 Ile,dermatophytoses
+33222095,Adenosine Receptors A1 and A2; AR; AR; AR,A2A;A2A;A2A;A2A;A2A,Parkinson's Disease;Parkinson's disease;PD
 33226157,acetylcholinesterase;AChE;butyrylcholinesterase;BuChE;AChE;BuChE;AChE;BuChE;AChE;BACE1,,Alzheimer's agents;Alzheimer's disease;AD;AD
-33376515,WNK4;WNK4;WNK4;WNK4;WNK4;WNK4;WNK4;WNK4;WNK4;WNK4,,hypertension
-33637956,ELAVL1,,bacterial infection;bacterial infection
-33823093,glutaminyl cyclase;glutaminyl cyclase;beta amyloid peptide,,chronic periodontitis;Alzheimer's disease
+33392964,SHP2;SHP2;SHP2WT;SHP2WT;SHP2,E69K;E69K;E69K,leukemia;PTP
 34366895,tumor necrosis factor-alpha;C-C motif chemokine ligand-20;heat shock protein (HSP)-27;HSP70;CARD domain containing (NLRC)-3;NLRC5;superoxide dismutase (SOD)-1;SOD2,,Heat Stress;heat stress;heat stress;heat stress
+34437424,,Leu615;R203Q;R203Q;Glu522;Asn552;Asn576;Leu615;E522A;N552A;N576A;L615A;L615A;L615A;Y332A;F364A;Leu615,biotoxicity;biotoxicity;toxicity
+34919466,TSHR;TSHR;TSHR;TSHR;TSHR;TSHR,Arg450His,Congenital Hypothyroidism;Primary congenital hypothyroidism;endocrine and metabolic disease;hypothyroidism
 34973996,,,paralysis;insect selective depressant
-35038180,E1alpha;E1beta;PDHA1;PDHA1;PDHB;PDHA1;PDHB;E1alpha;E1beta;E1alpha;E1alpha;E1alpha;E1beta;E1alpha;E1alpha;E1alpha;E1alpha,,pyruvate dehydrogenase complex (PDC) deficiency;Pyruvate dehydrogenase complex deficiency;lactic acidemia
 35122975,beta-catenin;beta-catenin;Telomerase reverse transcriptase;TERT;TERT;tumor necrosis factor-alpha;interleukin-1beta;interleukin-6;IL-1beta;beta-catenin;TERT;TERT;beta-catenin;TERT,,wounds;inflammation;inflammatory;inflammatory;inflammatory;wounds;wounds;inflammation;wounds;burns
-35915427,,c.301G > A;p.Val101Met;c.812delG;c.812delG;c.301G > A;p.Val101Met;c.812delG;p.Gly271Glufs*131,Hereditary nonspherocytic hemolytic anemia;glucose-6-phosphate isomerase (GPI) deficiency;Glucose phosphate isomerase (GPI) deficiency;autosomal recessive disorder;hereditary nonspherocytic hemolytic anemia;HNSHA;GPI deficiency;jaundice;hemolytic anemia;macrocytosis;reticulocytosis;neutropenia;hyperbilirubinemia;GPI deficiency;jaundice;HNSHA;neurological impairment
-36104373,Nicotinamide N-methyltransferase;Nicotinamide N-methyltransferase;NNMT;NNMT;NNMT;NNMT;NNMT;NNMT,,metabolic disorders;metabolic disorders;obese;diabetes;obesity;metabolic disorders
 36428153,C5a Anaphylatoxin Chemotactic Receptor 1;C5a anaphylatoxin chemotactic receptor 1;C5aR1;C5aR1;TM5;C5aR1;TM5;C5aR1;TM5;TM5;TM5;C5aR1,,inflammatory
-37179472,DRG1;Developmentally-regulated GTP-binding protein 1;DRG1;DRG1;DRG1;DRG1;DRG1;DRG1;ZC3H15;DRG1;Drg1;DRG1,p.Gly54*;p.Arg140*;p.Lys263*;p.Asn248Phe,Neurodevelopmental Disorder;neurodevelopmental disorder;developmental delay;primary microcephaly;short stature;craniofacial anomalies;lethality;Mendelian disorder;DRG1 deficiency
-37346960,"carbonic anhydrase II, IX and XII",,glaucoma;epilepsy;altitude sickness;obesity
-37368488,LRP1;Low Density Lipoprotein Receptor-related Protein-1;LRP1;PrPC;PrPC;LRP1;PrPC;PrPC;PrPC;Prnp;ERK1/2;LRP1;PrPC;LRP1;LRP1;PrPC;LRP1,Lys100 and Lys103 into Ala;Lys105 and Lys109 were converted into Ala,inflammatory
-37551116,Thymidylate Kinase;Biotin carboxylase,,toxicity
-37726403,PHGDH;p53;phosphoglycerate dehydrogenase;PHGDH;p53;PHGDH;p53;AXIN;HIPK2;p53;p53;HIPK2;p53;PHGDH;p53;p53;PHGDH;PHGDH;Trp53;PHGDH;p53,R135W;V261M;T57A;T78A;T57A;R135W,hepatocellular carcinoma;HCC;HCC;HCC;HCC
-38077314,Ifih1;interferon;IFN;ifih1;ifih1;ifih1;IFN;isg15;ifih1;mavs;ikbke;Jak1;Jak2,p.Arg742His;p.Arg779His,Aicardi-Goutieres syndrome;inflammation;Type I interferonopathies;rare diseases;Type I interferonopathies;Type I interferonopathy;inflammation;Type I interferonopathies;inflammation;inflammation;AGS
+37107640,SATB2;SATB2,c.715C>T;c.715C>T;p.(Arg239*);c.715C>T;p.(Arg239*),developmental delay;intellectual disability;speech delay;or absence;craniofacial abnormalities;behavioral problems
+37141437,"PACS1;PACS1;PACS1;PACS1;GGA3;Golgi-associated, gamma-adaptin ear-containing, ARF-binding protein 3;PACS1;GGA3;PACS1",755C > T;p.(Ser252Phe),syndromic intellectual disability;PACS1-neurodevelopmental disorder;PACS1-NDD;PACS1-NDD;syndromic intellectual disability;syndromic intellectual disability;PACS1-NDD;PACS1-NDD;syndromic intellectual disability
+37631011,,,Cancer
+38072526,CYP6A14;CYP6A14;CYP6A14;CYP6A14;CYP6A14;CYP6A14,,flonicamid
 38579615,PHGDH;Phosphoglycerate dehydrogenase;PHGDH;PHGDH;PHGDH;PHGDH,,tumorigenesis;metastasis;tumors;cancer
+38590677,,,depression;mental illness;depression;depression;depression;anxiety
+39343253,oleosin;IgE,,allergy
 39442746,BDNF;BDNF,,depression;hyperactivity of the hypothalamic-pituitary-adrenal (HPA) axis;depression;depression;anhedonia;BW gain;adrenal hypertrophy;anhedonia;depression
-39551437,,,Ancylostoma;canine hookworm infections;hookworm infections
+39500555,HSPD1;HSP60;HSPD1;HSP60;HSPD1;HSPD1;HSPD1;HSP60;HSPD1,Ala536;p.Ala536Pro;p.Ala536Val;Leu47Val,hypomyelinating leukodystrophy;Hypomyelinating leukodystrophies;genetic disorders;myelin deficiency;developmental delay;neuroregression;nystagmus;central hypotonia;spasticity;ataxia;hereditary spastic paraplegia;MIM 605280;hypomyelinating leukodystrophy 4;MIM 612233;hypomyelinating leukodystrophy;hypomyelinating disorder;nystagmus;tremor;hypotonia;spasticity;ataxia;neuroregression;hypomyelination
+39554985,DHFR,,Malaria;toxicity;malarial
+39574220,,,Hypoparathyroidism;parathyroid hormone (PTH) deficiency;impaired mineral metabolism;Treatment-emergent adverse events;TEAEs;TEAEs;TEAE
+18983494,lipoprotein associated phospholipase A2;lipoprotein-associated phospholipase A2;LpPLA2;LpPLA2;PLA2G7;LpPLA2;LpPLA2;LpPLA2;LpPLA2,-1357G>A;-403T>C;Arg92His;Ile198Thr;Ala379Val;-403C,cardiovascular disease;cardiovascular disease;atherogenic;coronary artery disease;CAD;CAD;CAD;cardiovascular disease
+28754362,A3G,,AIDS
+36719113,PHY,,SARS-CoV-2;COVID-19;SARS-CoV-2
+37495854,thrombin;Thrombin;thrombin;thrombin;thrombin;thrombin;thrombin;thrombin;thrombin;thrombin;thrombin,,blood coagulation
+37978906,FFAR4;free fatty acid receptor 4;FFAR4;FFAR4;FFAR4;FFAR4;ARG99;FFAR4;FFAR4,,type 2 diabetes mellitus;Diabetes mellitus;metabolic disorder;type 2 diabetes mellitus;T2DM;obesity;T2DM
+38077314,Ifih1;interferon;IFN;ifih1;ifih1;ifih1;IFN;isg15;ifih1;mavs;ikbke;Jak1;Jak2,p.Arg742His;p.Arg779His,Aicardi-Goutieres syndrome;inflammation;Type I interferonopathies;rare diseases;Type I interferonopathies;Type I interferonopathy;inflammation;Type I interferonopathies;inflammation;inflammation;AGS
