@@ -3,9 +3,6 @@ import subprocess
 import os
 
 def run_vep(input_vcf, output_vcf):
-    """
-    使用VEP对输入VCF进行注释，并将结果写出到新的VCF文件中。
-    """
     input_vcf = os.path.abspath(input_vcf)
     output_vcf = os.path.abspath(output_vcf)
 
@@ -13,17 +10,17 @@ def run_vep(input_vcf, output_vcf):
         "vep",
         "--input_file", input_vcf,
         "--output_file", output_vcf,
-        '--vcf',  # 输出 VCF 格式
-        '--cache',  # 使用缓存注释（离线模式）
-        '--offline',  # 以离线模式运行
-        '--symbol',  # 添加基因符号信息
-        '--hgvsp', # 蛋白质层面信息
+        '--vcf',  
+        '--cache',  
+        '--offline',  
+        '--symbol',  
+        '--hgvsp', # protein message
         '--fasta', '/Users/caicai/.vep/homo_sapiens/112_GRCh38/Homo_sapiens.GRCh38.dna.toplevel.fa',  # 使用压缩的FASTA文件
-        '--force_overwrite',  # 覆盖已有输出文件
+        '--force_overwrite', 
         '--everything',
-        '--check_existing',  # 检查是否已知的dbSNP变异
+        '--check_existing', 
         '--fork', '10',
-        '--no_stats'  # 禁用统计信息生成
+        '--no_stats'
     ]
 
     subprocess.check_call(cmd)

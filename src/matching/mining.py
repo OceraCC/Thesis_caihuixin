@@ -7,7 +7,7 @@ def query_pubtator(pmids, format="biocjson"):
     pmids_str = ",".join(pmids)
     url = f"https://www.ncbi.nlm.nih.gov/research/pubtator3-api/publications/export/{format}?pmids={pmids_str}"
     response = requests.get(url)
-    response.raise_for_status()  # 若非200状态码会抛出异常
+    response.raise_for_status() 
     return response.json()
 
 def extract_entities(data):

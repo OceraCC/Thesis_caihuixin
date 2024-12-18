@@ -10,7 +10,7 @@ ESEARCH_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
 EFETCH_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
 
 MAX_ARTICLES = 5
-SEM = asyncio.Semaphore(5)  # 限制同时进行的请求数，防止服务器过载
+SEM = asyncio.Semaphore(5)  # Requests at a same time
 API_KEY = "a5a62f477ecadf68b6f60e03633847489c08"
 
 async def fetch_pmids(session, variant, retries=3):
@@ -32,9 +32,7 @@ async def fetch_pmids(session, variant, retries=3):
                     else:
                         await asyncio.sleep(0.5)
         except aiohttp.ClientError:
-            # 网络错误，等待重试
             await asyncio.sleep(1)
-    # 重试失败返回空
     return []
 
 async def fetch_pubmed_details(session, pmids, retries=3):
@@ -65,12 +63,9 @@ async def fetch_pubmed_details(session, pmids, retries=3):
                         return results
                     else:
                         print(resp.status)
-                        # 非200状态码，等待重试
                         await asyncio.sleep(1)
         except aiohttp.ClientError:
-            # 网络错误，等待重试
             await asyncio.sleep(1)
-    # 重试失败返回空列表
     return []
 
 async def fetch_variant_info(session, variant, cache):

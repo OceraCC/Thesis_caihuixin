@@ -4,23 +4,19 @@ import pandas as pd
 import re
 
 def parse_vep_output_for_protein_changes(annotated_vcf):
-    """
-    从VEP注释后的VCF文件中解析CSQ字段，提取HGVSp蛋白变异信息（如Ala552Val）。
-    """
+
     variant_data = []
     vcf_reader = vcfpy.Reader.from_path(annotated_vcf)
     for record in vcf_reader:
-        # 获取变异的CSQ字段（VEP注释）
         csq_info = record.INFO.get("CSQ")
     
-        # 如果CSQ字段存在，解析其中的信息
         if csq_info:
             for csq in csq_info:
-                # 解析每个注释信息，这里可以获取基因、变异类型等
+                # Parse each annotation information, such as genes, variant types, etc.
                 fields = csq.split('|')
-                consequence = fields[1]  # 例如获取变异的功能类型
-                gene = fields[3]  # 基因符号
-                transcript = fields[4]  # 转录本ID
+                consequence = fields[1]
+                gene = fields[3]
+                transcript = fields[4]
                 protein_vari = fields[11]
                 variID = fields[17]
                 if protein_vari:
@@ -38,6 +34,5 @@ def parse_vep_output_for_protein_changes(annotated_vcf):
     df = pd.DataFrame(variant_data)
     df_deduplicated = df.drop_duplicates()
 
-    # 将结果保存为CSV文件
     output_csv = "data/interim/annoed_variant_id.csv"
     df_deduplicated.to_csv(output_csv, index=False)
