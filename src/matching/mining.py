@@ -34,7 +34,8 @@ def extract_entities(data):
                 elif etype_lower in ["mutation", "variant"]:
                     mutations.append(entity_text)
                 elif etype_lower == "disease":
-                    diseases.append(entity_text)
+                    mesh_id = infons.get("identifier", "") 
+                    diseases.append(mesh_id)
 
         gene_str = ";".join(genes)
         mutation_str = ";".join(mutations)

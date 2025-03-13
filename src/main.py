@@ -64,27 +64,27 @@ def mining_main():
 
 def main():
     # 1. Annotation
-    input_vcf = "data/raw/chr1.vcf"
-    annotated_vcf = "data/interim/chr1_annotated.vcf"
-    run_vep(input_vcf, annotated_vcf)
+    # input_vcf = "data/raw/chr1.vcf"
+    # annotated_vcf = "data/interim/chr1_annotated.vcf"
+    # run_vep(input_vcf, annotated_vcf)
 
-    # 2. Extract variants
-    annotated_vcf = "/Users/caicai/THESIS/annotated_everything_chr1.vcf"
-    parse_vep_output_for_protein_changes(annotated_vcf)
+    # # 2. Extract variants
+    # annotated_vcf = "/Users/caicai/THESIS/annotated_everything_chr1.vcf"
+    # parse_vep_output_for_protein_changes(annotated_vcf)
 
     # 3. Getting PMIDs, links and abstracts
-    asyncio.run(get_list_main("data/interim/test_variant.csv", "results/protein_pubmed.csv"))
+    #asyncio.run(get_list_main("data/interim/test_variant.csv", "results/protein_pubmed.csv"))
 
     # 4. Text mining by pubtator
-    mining_main()
+    #mining_main()
     
     # 5. Visualization
     generate_html(entities_csv="results/entities_extracted.csv", variants_csv="results/protein_pubmed.csv")
 
     # Remove interim file
-    interim_files = glob.glob("data/interim/*")
-    for f in interim_files:
-        os.remove(f)
+    #interim_files = glob.glob("data/interim/*")
+    #for f in interim_files:
+     #   os.remove(f)
     
     print("Pipeline completed.")
 
