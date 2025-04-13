@@ -61,6 +61,7 @@ def generate_html(entities_csv, variants_csv):
     with open(VARIANTS_CSV, "r", encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
+            # 将换行符替换为分号，保证 pmids 与 Links 字段不会因为换行导致解析错误
             for key in ["pmids", "Links"]:
                 if key in row and row[key]:
                     row[key] = row[key].replace("\n", ";")
@@ -96,6 +97,9 @@ def generate_html(entities_csv, variants_csv):
     compressed_pmid_variant = compress_and_encode(pmid_variant_map)
     compressed_amino_acids = compress_and_encode(list(all_amino_acids))
 
+    # ---------------------
+    # 以下是 HTML 结构与前端逻辑
+    # ---------------------
     html_part1 = f"""
     <!DOCTYPE html>
     <html>
@@ -207,6 +211,47 @@ def generate_html(entities_csv, variants_csv):
       margin-left: 240px;
       padding: 20px;
     }}
+
+    /* 小窗（popover）样式 */
+    .vcf-popover {{
+      position: absolute;
+      min-width: 200px;
+      max-width: 350px;
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      z-index: 9999;
+      display: none; /* 初始隐藏 */
+      border-radius: 4px;
+    }}
+    .vcf-popover-header {{
+      font-weight: bold;
+      margin-bottom: 6px;
+    }}
+    .vcf-popover-close {{
+      cursor: pointer;
+      float: right;
+      font-size: 1.1em;
+      font-weight: normal;
+      margin-left: 8px;
+      color: #555;
+    }}
+    .vcf-popover-close:hover {{
+      color: #e00;
+    }}
+    .vcf-popover-body {{
+      white-space: pre-wrap; /* 保留换行等 */
+      word-wrap: break-word; /* 让长字符串折行 */
+    }}
+    .vcf-link {{
+      text-decoration: underline;
+      cursor: pointer;
+      color: #0073e6;
+    }}
+    .vcf-link:hover {{
+      color: #005bb5;
+    }}
     </style>
     </head>
     <body>
@@ -231,6 +276,16 @@ def generate_html(entities_csv, variants_csv):
       <h2 id="sidebar-title"></h2>
       <div id="sidebar-content"></div>
     </div>
+
+    <!-- 只创建一个通用的 popover，用时再改内容、改位置 -->
+    <div id="vcf-popover" class="vcf-popover">
+      <div class="vcf-popover-header">
+        <span>VCF Info</span>
+        <span class="vcf-popover-close" onclick="closeVCFPopover()">×</span>
+      </div>
+      <div id="vcf-popover-body" class="vcf-popover-body"></div>
+    </div>
+
     <script>
     function decompressData(data) {{
         const binData = Uint8Array.from(atob(data), c => c.charCodeAt(0));
@@ -269,9 +324,51 @@ def generate_html(entities_csv, variants_csv):
         "C25": "Chemically-Induced Disorders",
         "C26": "Wounds and Injuries"
     }};
+
+    function closeSidebar() {{
+        document.getElementById('sidebar').classList.remove('active');
+    }}
+
+    // VCF popover相关
+    function closeVCFPopover() {{
+        const popover = document.getElementById('vcf-popover');
+        popover.style.display = "none";
+    }}
+
+    function showVCFPopover(element, vcfText) {{
+        const popover = document.getElementById('vcf-popover');
+        const body = document.getElementById('vcf-popover-body');
+
+        body.textContent = vcfText || "";
+
+        // 先显示，先隐藏可见性，这样能计算到 popover的 offsetWidth / offsetHeight
+        popover.style.display = "block";
+        popover.style.visibility = "hidden";
+
+        // 强制刷新一次DOM，让浏览器计算offsetWidth
+        popover.offsetWidth;  // 读一下，强制重排
+
+        const popoverWidth = popover.offsetWidth;
+        // 让它的“右边”贴着右侧sidebar的“左边线” (即 window.innerWidth - 300)
+        const rightSidebarLeft = window.innerWidth - 300;
+        
+        // 获取被点击元素的位置信息
+        const rect = element.getBoundingClientRect();
+        // 计算 top 位置：让 popover 的 top 与点击元素的 top 大致相同
+        const top = window.scrollY + rect.top;
+        // 计算 left 位置：即 “sidebar左边线 - popover宽度”
+        const left = rightSidebarLeft - popoverWidth;
+
+        // 设置最终定位
+        popover.style.top = top + "px";
+        popover.style.left = left + "px";
+        // 最后让它可见
+        popover.style.visibility = "visible";
+    }}
     </script>
     """
 
+    # 这里是前端 React 代码和事件处理逻辑
     html_part2 = r"""
     <script type="text/babel">
     const { useState, useEffect } = React;
@@ -306,7 +403,7 @@ def generate_html(entities_csv, variants_csv):
             setFilteredDiseases(allDiseaseIds);
         };
 
-        // 给reset-button 绑定点击事件
+        // 给reset-button绑定点击事件
         useEffect(() => {
             const resetBtn = document.getElementById("reset-button");
             if (resetBtn) {
@@ -330,9 +427,19 @@ def generate_html(entities_csv, variants_csv):
                 detailsHTML += '<table class="details-table"><thead><tr><th>Gene</th><th>Consequence</th><th>Protein Variation</th></tr></thead><tbody>';
                 const variants = variantsData[pmid] || [];
                 variants.forEach(variant => {
+                    // 对 vcf 的引号做转义，避免 HTML 拼接时出错
+                    const vcfValue = (variant.vcf || "")
+                      .replace(/"/g, '&quot;')
+                      .replace(/'/g, '&#39;');
+
                     detailsHTML += "<tr><td>" + (variant.Gene || "") + "</td><td>" +
-                                   (variant.Consequence || "") + "</td><td>" +
-                                   (variant["Protein Variation"] || "") + "</td></tr>";
+                                   (variant.Consequence || "") + "</td><td>";
+
+                    // 用 data-vcf 存放真实文本，通过点击事件展示弹窗
+                    detailsHTML += "<span class='vcf-link' data-vcf='" + vcfValue + "'>" +
+                                   (variant["Protein Variation"] || "") + "</span>";
+
+                    detailsHTML += "</td></tr>";
                 });
                 detailsHTML += '</tbody></table>';
             });
@@ -340,6 +447,17 @@ def generate_html(entities_csv, variants_csv):
             document.getElementById('sidebar-title').innerText = info.name || diseaseId;
             document.getElementById('sidebar-content').innerHTML = detailsHTML;
             document.getElementById('sidebar').classList.add('active');
+
+            // sidebar-content 添加事件委托，用于点击 .vcf-link 时展示 popover
+            const sidebarContent = document.getElementById('sidebar-content');
+            if (sidebarContent) {
+                sidebarContent.addEventListener('click', function(e) {
+                    if (e.target && e.target.classList.contains('vcf-link')) {
+                        const vcf = e.target.getAttribute('data-vcf') || '';
+                        showVCFPopover(e.target, vcf);
+                    }
+                });
+            }
         };
 
         const handleClassificationClick = (cls) => {
@@ -428,7 +546,6 @@ def generate_html(entities_csv, variants_csv):
         return (
             <div>
                 {classifications.map(cls => {
-                    // 如果 classificationNameMap[cls] 存在, 就显示英文名称, 否则显示 cls
                     const officialName = classificationNameMap[cls] || cls;
                     const isSelected = (cls === selectedCls);
                     return (
@@ -443,10 +560,6 @@ def generate_html(entities_csv, variants_csv):
                 })}
             </div>
         );
-    }
-
-    function closeSidebar() {
-        document.getElementById('sidebar').classList.remove('active');
     }
 
     ReactDOM.render(<App />, document.getElementById('root'));

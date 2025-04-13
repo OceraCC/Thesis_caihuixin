@@ -17,7 +17,7 @@ async def get_list_main(input_csv, output_csv):
 
     with open(input_csv, 'r', newline='') as f:
         reader = csv.DictReader(f)
-        fieldnames = reader.fieldnames + ["pmids", "Links", "Abstracts"]
+        fieldnames = reader.fieldnames + ["pmids", "Links"]
         for row in reader:
             var = row["Protein Variation"] 
             variants.append(var)
@@ -31,7 +31,7 @@ async def get_list_main(input_csv, output_csv):
         await asyncio.gather(*tasks)
 
     with open(output_csv, 'w', newline='') as f:
-        fieldnames = list(rows[0].keys()) + ["pmids", "Links", "Abstracts"]
+        fieldnames = list(rows[0].keys()) + ["pmids", "Links"]
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         for row in rows:
@@ -40,10 +40,8 @@ async def get_list_main(input_csv, output_csv):
             info = info[:MAX_ARTICLES]
             pmids = "\n".join([item[0] for item in info])
             links = "\n".join([item[1] for item in info])
-            abstracts = "\n".join([item[2] for item in info])
             row["pmids"] = pmids
             row["Links"] = links
-            row["Abstracts"] = abstracts
             writer.writerow(row)
 
 def mining_main():
@@ -69,14 +67,14 @@ def main():
     # run_vep(input_vcf, annotated_vcf)
 
     # # 2. Extract variants
-    # annotated_vcf = "/Users/caicai/THESIS/annotated_everything_chr1.vcf"
-    # parse_vep_output_for_protein_changes(annotated_vcf)
+    #annotated_vcf = "/Users/caicai/THESIS/annotated_everything_chr1.vcf"
+    #parse_vep_output_for_protein_changes(annotated_vcf)
 
-    # 3. Getting PMIDs, links and abstracts
+    # 3. Getting PMIDs, links
     #asyncio.run(get_list_main("data/interim/test_variant.csv", "results/protein_pubmed.csv"))
 
     # 4. Text mining by pubtator
-    #mining_main()
+    mining_main()
     
     # 5. Visualization
     generate_html(entities_csv="results/entities_extracted.csv", variants_csv="results/protein_pubmed.csv")
