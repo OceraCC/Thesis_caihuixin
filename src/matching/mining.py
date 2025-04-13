@@ -53,7 +53,7 @@ def extract_entities(data):
     return results
 
 def write_to_csv(results):
-    output_csv="results/entities_extracted.csv"
+    output_csv="results/entities_extracted2.csv"
     fieldnames = ["pmid", "gene", "mutation", "disease"]
     with open(output_csv, "w", newline='', encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)

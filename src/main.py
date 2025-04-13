@@ -19,11 +19,11 @@ async def get_list_main(input_csv, output_csv):
         reader = csv.DictReader(f)
         fieldnames = reader.fieldnames + ["pmids", "Links"]
         for row in reader:
-            var = row["Protein Variation"] 
+            var = row["Gene"] 
             variants.append(var)
             rows.append(row)
 
-    unique_variants = list(set(variants))
+    unique_variants = list(set(variants))[:300]
     cache = {}
 
     async with aiohttp.ClientSession() as session:
@@ -31,11 +31,12 @@ async def get_list_main(input_csv, output_csv):
         await asyncio.gather(*tasks)
 
     with open(output_csv, 'w', newline='') as f:
+        print("start3")
         fieldnames = list(rows[0].keys()) + ["pmids", "Links"]
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         for row in rows:
-            var = row["Protein Variation"]
+            var = row["Gene"]
             info = cache.get(var, [])
             info = info[:MAX_ARTICLES]
             pmids = "\n".join([item[0] for item in info])
@@ -45,7 +46,7 @@ async def get_list_main(input_csv, output_csv):
             writer.writerow(row)
 
 def mining_main():
-    pmids = get_pmids_from_csv("results/protein_pubmed.csv", pmid_column="pmids")
+    pmids = get_pmids_from_csv("results/gene_pubmed.csv", pmid_column="pmids")
 
     all_results = []
     batch_size = 100
@@ -71,13 +72,13 @@ def main():
     #parse_vep_output_for_protein_changes(annotated_vcf)
 
     # 3. Getting PMIDs, links
-    #asyncio.run(get_list_main("data/interim/test_variant.csv", "results/protein_pubmed.csv"))
+    #asyncio.run(get_list_main("data/interim/variants.csv", "results/gene_pubmed.csv"))
 
     # 4. Text mining by pubtator
-    mining_main()
+    #mining_main()
     
     # 5. Visualization
-    generate_html(entities_csv="results/entities_extracted.csv", variants_csv="results/protein_pubmed.csv")
+    generate_html(entities_csv="results/entities_extracted2.csv", variants_csv="results/gene_pubmed.csv")
 
     # Remove interim file
     #interim_files = glob.glob("data/interim/*")

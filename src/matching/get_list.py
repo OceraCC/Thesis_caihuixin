@@ -10,7 +10,7 @@ ESEARCH_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
 EFETCH_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
 
 MAX_ARTICLES = 5
-SEM = asyncio.Semaphore(3)  # Requests at a same time
+SEM = asyncio.Semaphore(2)  # Requests at a same time
 API_KEY = "a5a62f477ecadf68b6f60e03633847489c08"
 
 async def fetch_pmids(session, variant, retries=3):
@@ -21,6 +21,7 @@ async def fetch_pmids(session, variant, retries=3):
         "retmode": "json",
         "api_key": API_KEY
     }
+    print("start1")
     for attempt in range(retries):
         try:
             async with SEM:
@@ -43,6 +44,7 @@ async def fetch_pubmed_details(session, pmids, retries=3):
         "id": ",".join(pmids),
         "retmode": "xml"
     }
+    print("start2")
     for attempt in range(retries):
         try:
             async with SEM:

@@ -368,7 +368,7 @@ def generate_html(entities_csv, variants_csv):
     </script>
     """
 
-    # 这里是前端 React 代码和事件处理逻辑
+    # 前端 React 代码和事件处理逻辑
     html_part2 = r"""
     <script type="text/babel">
     const { useState, useEffect } = React;
