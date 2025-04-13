@@ -57,7 +57,6 @@ def generate_html(entities_csv, variants_csv):
 
     # 读取 variants_csv
     pmid_variant_map = defaultdict(list)
-    all_amino_acids = set()
     with open(VARIANTS_CSV, "r", encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
@@ -71,11 +70,6 @@ def generate_html(entities_csv, variants_csv):
                 if pmid:
                     pmid_variant_map[pmid].append(row)
 
-            if row.get("Protein Variation"):
-                parts = row["Protein Variation"].split(" ")
-                for part in parts:
-                    if part[:3].isalpha():
-                        all_amino_acids.add(part[:3])
 
     # 整理 disease_info_map
     disease_info_map = {}
@@ -95,7 +89,6 @@ def generate_html(entities_csv, variants_csv):
 
     compressed_disease_info = compress_and_encode(disease_info_map)
     compressed_pmid_variant = compress_and_encode(pmid_variant_map)
-    compressed_amino_acids = compress_and_encode(list(all_amino_acids))
 
     # ---------------------
     # 以下是 HTML 结构与前端逻辑
@@ -106,7 +99,7 @@ def generate_html(entities_csv, variants_csv):
     <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Disease-Protein Variants</title>
+    <title>Disease-Variants</title>
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
@@ -262,21 +255,22 @@ def generate_html(entities_csv, variants_csv):
       <div id="classification-list"></div>
     </div>
 
-    <div class="container content-container">
-      <h1>Disease-Protein Variants Relationship</h1>
-      <div class="filter-controls">
-        <label for="aminoFilter">Filter by Amino Acid:</label>
-        <button class="reset-btn" id="reset-button">Reset</button>
-      </div>
-      <div id="root"></div>
-    </div>
-
     <div id="sidebar" class="sidebar">
       <span class="close-btn" onclick="closeSidebar()">&times;</span>
       <h2 id="sidebar-title"></h2>
       <div id="sidebar-content"></div>
     </div>
+    
+    <!-- 右侧展示区 -->
+    <div class="container content-container">
+      <h1>Disease-Gene Variation Relationship</h1>
+      <div class="filter-controls">
+        <button class="reset-btn" id="reset-button">Reset</button>
+      </div>
 
+      <div id="root"></div>
+    </div>
+    
     <!-- 只创建一个通用的 popover，用时再改内容、改位置 -->
     <div id="vcf-popover" class="vcf-popover">
       <div class="vcf-popover-header">
@@ -294,7 +288,6 @@ def generate_html(entities_csv, variants_csv):
 
     diseaseInfoMap = decompressData("{compressed_disease_info}");
     variantsData = decompressData("{compressed_pmid_variant}");
-    aminoAcids = decompressData("{compressed_amino_acids}");
 
     const classificationNameMap = {{
         "C01": "Bacterial Infections and Mycoses",
@@ -376,7 +369,6 @@ def generate_html(entities_csv, variants_csv):
     function App() {
         const allDiseaseIds = Object.keys(diseaseInfoMap);
 
-        const [selectedAmino, setSelectedAmino] = useState("");
         const [selectedClassification, setSelectedClassification] = useState("");
         const [filteredDiseases, setFilteredDiseases] = useState(allDiseaseIds);
 
@@ -385,20 +377,10 @@ def generate_html(entities_csv, variants_csv):
             if (selectedClassification) {
                 result = result.filter(did => diseaseInfoMap[did].classification === selectedClassification);
             }
-            if (selectedAmino) {
-                result = result.filter(did => {
-                    const pmids = diseaseInfoMap[did].pmids || [];
-                    return pmids.some(pmid => {
-                        const variants = variantsData[pmid] || [];
-                        return variants.some(v => v["Protein Variation"]?.includes(selectedAmino));
-                    });
-                });
-            }
             setFilteredDiseases(result);
         };
 
         const resetFilter = () => {
-            setSelectedAmino("");
             setSelectedClassification("");
             setFilteredDiseases(allDiseaseIds);
         };
@@ -413,10 +395,6 @@ def generate_html(entities_csv, variants_csv):
             }
         }, []);
 
-        const handleAminoChange = (e) => {
-            setSelectedAmino(e.target.value);
-        };
-
         const handleDiseaseClick = (diseaseId) => {
             const info = diseaseInfoMap[diseaseId];
             if (!info) return;
@@ -424,7 +402,7 @@ def generate_html(entities_csv, variants_csv):
             let detailsHTML = '<h3>Associated PMIDs and Variants</h3>';
             (info.pmids || []).forEach(pmid => {
                 detailsHTML += `<h4>PMID: <a href='https://pubmed.ncbi.nlm.nih.gov/${pmid}' target='_blank'>${pmid}</a></h4>`;
-                detailsHTML += '<table class="details-table"><thead><tr><th>Gene</th><th>Consequence</th><th>Protein Variation</th></tr></thead><tbody>';
+                detailsHTML += '<table class="details-table"><thead><tr><th>Gene</th><th>Consequence</th><th>Variation ID</th></tr></thead><tbody>';
                 const variants = variantsData[pmid] || [];
                 variants.forEach(variant => {
                     // 对 vcf 的引号做转义，避免 HTML 拼接时出错
@@ -432,14 +410,15 @@ def generate_html(entities_csv, variants_csv):
                       .replace(/"/g, '&quot;')
                       .replace(/'/g, '&#39;');
 
-                    detailsHTML += "<tr><td>" + (variant.Gene || "") + "</td><td>" +
-                                   (variant.Consequence || "") + "</td><td>";
+                    detailsHTML += "<tr><td>";
 
                     // 用 data-vcf 存放真实文本，通过点击事件展示弹窗
                     detailsHTML += "<span class='vcf-link' data-vcf='" + vcfValue + "'>" +
-                                   (variant["Protein Variation"] || "") + "</span>";
-
-                    detailsHTML += "</td></tr>";
+                                   (variant["Gene"] || "") + "</span>" + "</td><td>";
+                    
+                    detailsHTML += (variant["Consequence"] || "") + "</td><td>" +
+                                   (variant["Variaion ID"] || "") + "</td></tr>";
+                                   
                 });
                 detailsHTML += '</tbody></table>';
             });
@@ -463,15 +442,6 @@ def generate_html(entities_csv, variants_csv):
         const handleClassificationClick = (cls) => {
             setSelectedClassification(cls);
             let result = allDiseaseIds.filter(did => diseaseInfoMap[did].classification === cls);
-            if (selectedAmino) {
-                result = result.filter(did => {
-                    const pmids = diseaseInfoMap[did].pmids || [];
-                    return pmids.some(pmid => {
-                        const variants = variantsData[pmid] || [];
-                        return variants.some(v => v["Protein Variation"]?.includes(selectedAmino));
-                    });
-                });
-            }
             setFilteredDiseases(result);
         };
 
@@ -483,19 +453,10 @@ def generate_html(entities_csv, variants_csv):
             }
             window.addEventListener("classificationSelect", onClassificationSelect);
             return () => window.removeEventListener("classificationSelect", onClassificationSelect);
-        }, [selectedAmino]);
+        }, []);
 
         return (
             <div>
-                <div className="filter-controls">
-                    <select onChange={handleAminoChange} value={selectedAmino}>
-                        <option value="">Select Amino Acid</option>
-                        {aminoAcids.sort().map(acid => (
-                            <option key={acid} value={acid}>{acid}</option>
-                        ))}
-                    </select>
-                    <button className="apply-btn" onClick={applyFilter}>Apply</button>
-                </div>
 
                 <div className="disease-list">
                     {filteredDiseases.map(did => {
