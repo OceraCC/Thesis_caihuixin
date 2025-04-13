@@ -7,7 +7,8 @@ import os
 from vcf_processing.pre_annotation import run_vep
 from vcf_processing.protein_variants import parse_vep_output_for_protein_changes
 from matching.get_list import fetch_variant_info, MAX_ARTICLES
-from matching.mining import get_pmids_from_csv, query_pubtator, extract_entities, write_to_csv
+from matching.mining import get_pmids_from_csv, query_pubtator, extract_relations, write_to_csv
+from matching.shaping import shaping
 from visualization.plot import generate_html
 
 
@@ -23,7 +24,7 @@ async def get_list_main(input_csv, output_csv):
             variants.append(var)
             rows.append(row)
 
-    unique_variants = list(set(variants))[:300]
+    unique_variants = list(set(variants))[:400]
     cache = {}
 
     async with aiohttp.ClientSession() as session:
@@ -56,7 +57,7 @@ def mining_main():
             continue
         
         bioc_data = query_pubtator(batch_pmids, format="biocjson")
-        batch_results = extract_entities(bioc_data)
+        batch_results = extract_relations(bioc_data)
         all_results.extend(batch_results)
 
     write_to_csv(all_results)
@@ -77,8 +78,11 @@ def main():
     # 4. Text mining by pubtator
     #mining_main()
     
-    # 5. Visualization
-    generate_html(entities_csv="results/entities_extracted2.csv", variants_csv="results/gene_pubmed.csv")
+    # 5. Shaping
+    #shaping(entities_csv="results/entities_extracted2.csv", gene_pubmed_csv="results/gene_pubmed.csv")
+    
+    #6. Visualization
+    generate_html(relations_csv="results/relations.csv", variants_csv="results/gene_pubmed.csv")
 
     # Remove interim file
     #interim_files = glob.glob("data/interim/*")

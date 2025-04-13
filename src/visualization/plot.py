@@ -36,25 +36,34 @@ def load_mesh_info(mesh_tsv_path="database/mesh2025.tsv"):
             }
     return mesh_map
 
-def generate_html(entities_csv, variants_csv):
-    ENTITIES_CSV = entities_csv
+def generate_html(relations_csv, variants_csv):
+    RELATIONS_CSV = relations_csv
     VARIANTS_CSV = variants_csv
 
     mesh_dict = load_mesh_info("database/mesh2025.tsv")
 
-    # 读取 entities_csv
+    # 读取 relations_csv
     disease_pmid_map = defaultdict(set)
-    with open(ENTITIES_CSV, "r", encoding="utf-8", newline="") as f:
+    with open(RELATIONS_CSV, "r", encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
             pmid = row.get("pmid", "")
-            diseases = row.get("disease", "").split(";")
-            for disease in diseases:
-                disease = disease.strip()
-                if disease:
-                    disease_pmid_map[disease].add(pmid)
+            disease = row.get("disease", "")
+            disease_pmid_map[disease].add(pmid)
     disease_pmid_map = {k: list(v) for k, v in disease_pmid_map.items()}
 
+    # 整理 disease_info_map
+    disease_info_map = {}
+    for disease_id, pmids in disease_pmid_map.items():
+        mesh_info = mesh_dict.get(disease_id, {})
+        disease_name = mesh_info.get("name", disease_id)
+        classification = mesh_info.get("classification", "unknown")
+        disease_info_map[disease_id] = {
+            "name": disease_name,
+            "classification": classification,
+            "pmids": pmids
+        }
+        
     # 读取 variants_csv
     pmid_variant_map = defaultdict(list)
     with open(VARIANTS_CSV, "r", encoding="utf-8", newline="") as f:
@@ -71,18 +80,6 @@ def generate_html(entities_csv, variants_csv):
                     pmid_variant_map[pmid].append(row)
 
 
-    # 整理 disease_info_map
-    disease_info_map = {}
-    for disease_id, pmids in disease_pmid_map.items():
-        mesh_info = mesh_dict.get(disease_id, {})
-        disease_name = mesh_info.get("name", disease_id)
-        classification = mesh_info.get("classification", "")
-        disease_info_map[disease_id] = {
-            "name": disease_name,
-            "classification": classification,
-            "pmids": pmids
-        }
-
     def compress_and_encode(data):
         compressed = zlib.compress(json.dumps(data, ensure_ascii=False).encode())
         return base64.b64encode(compressed).decode()
@@ -90,9 +87,6 @@ def generate_html(entities_csv, variants_csv):
     compressed_disease_info = compress_and_encode(disease_info_map)
     compressed_pmid_variant = compress_and_encode(pmid_variant_map)
 
-    # ---------------------
-    # 以下是 HTML 结构与前端逻辑
-    # ---------------------
     html_part1 = f"""
     <!DOCTYPE html>
     <html>
