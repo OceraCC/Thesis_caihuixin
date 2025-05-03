@@ -10,7 +10,7 @@ ESEARCH_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
 EFETCH_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
 
 MAX_ARTICLES = 5
-SEM = asyncio.Semaphore(2)  # Requests at a same time
+SEM = asyncio.Semaphore(3)  # Requests at a same time
 API_KEY = "a5a62f477ecadf68b6f60e03633847489c08"
 
 async def fetch_pmids(session, variant, retries=3):
@@ -31,6 +31,7 @@ async def fetch_pmids(session, variant, retries=3):
                         pmid_list = data.get("esearchresult", {}).get("idlist", [])
                         return pmid_list
                     else:
+                        print(resp.status)
                         await asyncio.sleep(2)
         except aiohttp.ClientError:
             await asyncio.sleep(1)

@@ -9,7 +9,11 @@ from vcf_processing.protein_variants import parse_vep_output_for_protein_changes
 from matching.get_list import fetch_variant_info, MAX_ARTICLES
 from matching.mining import get_pmids_from_csv, query_pubtator, extract_relations, write_to_csv
 from matching.shaping import shaping
+from db.db_init import init_relations_db, init_gene_db, init_mesh_db
+from validation.gwas_validating import gwas_merge
 from visualization.plot import generate_html
+import sqlite3
+import pandas as pd
 
 
 async def get_list_main(input_csv, output_csv):
@@ -20,7 +24,7 @@ async def get_list_main(input_csv, output_csv):
         reader = csv.DictReader(f)
         fieldnames = reader.fieldnames + ["pmids", "Links"]
         for row in reader:
-            var = row["Gene"] 
+            var = row["Variation ID"] 
             variants.append(var)
             rows.append(row)
 
@@ -37,14 +41,15 @@ async def get_list_main(input_csv, output_csv):
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         for row in rows:
-            var = row["Gene"]
+            var = row["Variation ID"]
             info = cache.get(var, [])
             info = info[:MAX_ARTICLES]
             pmids = "\n".join([item[0] for item in info])
             links = "\n".join([item[1] for item in info])
-            row["pmids"] = pmids
-            row["Links"] = links
-            writer.writerow(row)
+            if pmids:
+                row["pmids"] = pmids
+                row["Links"] = links
+                writer.writerow(row)
 
 def mining_main():
     pmids = get_pmids_from_csv("results/gene_pubmed.csv", pmid_column="pmids")
@@ -73,7 +78,7 @@ def main():
     #parse_vep_output_for_protein_changes(annotated_vcf)
 
     # 3. Getting PMIDs, links
-    #asyncio.run(get_list_main("data/interim/variants.csv", "results/gene_pubmed.csv"))
+    #asyncio.run(get_list_main("data/interim/variants.csv", "results/variant_pubmed.csv"))
 
     # 4. Text mining by pubtator
     #mining_main()
@@ -81,8 +86,18 @@ def main():
     # 5. Shaping
     #shaping(entities_csv="results/entities_extracted2.csv", gene_pubmed_csv="results/gene_pubmed.csv")
     
-    #6. Visualization
-    generate_html(relations_csv="results/relations.csv", variants_csv="results/gene_pubmed.csv")
+    # 6. Validating by GWAS
+    #gwas_merge(input_csv="results/gene_pubmed.csv")
+    
+    # 7. Building database
+    db_path = 'database/data.db'
+    #init_relations_db(csv_path="results/relations.csv", db_path=db_path)
+    #init_gene_db(csv_path="results/gene_pubmed.csv", db_path=db_path)
+    #init_mesh_db(tsv_path="database/mesh2025.tsv", db_path=db_path)
+    
+    
+    # 7. Visualization
+    #generate_html(relations_csv="results/relations.csv", variants_csv="results/gene_pubmed.csv")
 
     # Remove interim file
     #interim_files = glob.glob("data/interim/*")
