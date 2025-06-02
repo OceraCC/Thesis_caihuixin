@@ -1,0 +1,6 @@
+aiohttp>=3.8
+pandas>=1.5
+requests>=2.31
+streamlit>=1.45
+streamlit-agraph>=0.0.45
+vcfpy>=0.13.8

@@ -11,7 +11,7 @@ EFETCH_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
 
 MAX_ARTICLES = 5
 SEM = asyncio.Semaphore(3)  # Requests at a same time
-API_KEY = "a5a62f477ecadf68b6f60e03633847489c08"
+API_KEY = "b8cdab5841380c33827fc8c164be118b0e08"
 
 async def fetch_pmids(session, variant, retries=3):
     params = {
@@ -57,8 +57,7 @@ async def fetch_pubmed_details(session, pmids, retries=3):
                         for article in root.findall(".//PubmedArticle"):
                             pmid_el = article.find(".//PMID")
                             pmid = pmid_el.text if pmid_el is not None else ""
-                            link = f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/"
-                            results.append((pmid, link))
+                            results.append(pmid)
                         return results
                     else:
                         print(resp.status)

@@ -4,14 +4,15 @@ import csv
 import aiohttp
 import glob
 import os
+import subprocess
 from vcf_processing.pre_annotation import run_vep
-from vcf_processing.protein_variants import parse_vep_output_for_protein_changes
+from vcf_processing.protein_variants import parse_vep_output_for_changes
 from matching.get_list import fetch_variant_info, MAX_ARTICLES
 from matching.mining import get_pmids_from_csv, query_pubtator, extract_relations, write_to_csv
-from matching.shaping import shaping
-from db.db_init import init_relations_db, init_gene_db, init_mesh_db
-from validation.gwas_validating import gwas_merge
-from visualization.plot import generate_html
+from matching.shaping_v import shaping_v
+from matching.shaping_g import shaping_g
+from db.db_init import init_Vrelations_db, init_Grelations_db, init_variant_db, init_mesh_db
+from validation.gwas_merge import gwas_merge
 import sqlite3
 import pandas as pd
 
@@ -22,13 +23,13 @@ async def get_list_main(input_csv, output_csv):
 
     with open(input_csv, 'r', newline='') as f:
         reader = csv.DictReader(f)
-        fieldnames = reader.fieldnames + ["pmids", "Links"]
+        fieldnames = reader.fieldnames + ["pmids"]
         for row in reader:
-            var = row["Variation ID"] 
+            var = row["Gene"] 
             variants.append(var)
             rows.append(row)
 
-    unique_variants = list(set(variants))[:400]
+    unique_variants = list(set(variants))
     cache = {}
 
     async with aiohttp.ClientSession() as session:
@@ -36,36 +37,44 @@ async def get_list_main(input_csv, output_csv):
         await asyncio.gather(*tasks)
 
     with open(output_csv, 'w', newline='') as f:
-        print("start3")
-        fieldnames = list(rows[0].keys()) + ["pmids", "Links"]
+        fieldnames = list(rows[0].keys()) + ["pmids"]
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         for row in rows:
-            var = row["Variation ID"]
+            var = row["Gene"]
             info = cache.get(var, [])
             info = info[:MAX_ARTICLES]
-            pmids = "\n".join([item[0] for item in info])
-            links = "\n".join([item[1] for item in info])
+            pmids = "\n".join(info)
             if pmids:
                 row["pmids"] = pmids
-                row["Links"] = links
                 writer.writerow(row)
 
 def mining_main():
-    pmids = get_pmids_from_csv("results/gene_pubmed.csv", pmid_column="pmids")
+    pmids = get_pmids_from_csv("results/variant_pubmed.csv", pmid_column="pmids")
 
-    all_results = []
-    batch_size = 100
+    all_variant = []
+    all_gene = []
+    batch_size = 70
     for i in range(0, len(pmids), batch_size):
         batch_pmids = pmids[i:i+batch_size]
         if not batch_pmids:
             continue
-        
-        bioc_data = query_pubtator(batch_pmids, format="biocjson")
-        batch_results = extract_relations(bioc_data)
-        all_results.extend(batch_results)
 
-    write_to_csv(all_results)
+        bioc_data = query_pubtator(batch_pmids, format="biocjson")
+        gene_rels, var_rels = extract_relations(bioc_data)
+        all_variant.extend(var_rels)
+        all_gene.extend(gene_rels)
+
+    # Write to separate files
+    write_to_csv(all_variant, "results/extracted_v.csv")
+    write_to_csv(all_gene, "results/extracted_g.csv")
+    
+def launch_visualization():
+    vis_path = os.path.join(os.path.dirname(__file__), 'visualization', 'page.py')
+
+    env = os.environ.copy()
+    env["PYTHONPATH"] = os.path.dirname(__file__)
+    subprocess.run(['streamlit', 'run', vis_path], env=env)
 
 def main():
     # 1. Annotation
@@ -74,30 +83,31 @@ def main():
     # run_vep(input_vcf, annotated_vcf)
 
     # # 2. Extract variants
-    #annotated_vcf = "/Users/caicai/THESIS/annotated_everything_chr1.vcf"
-    #parse_vep_output_for_protein_changes(annotated_vcf)
+    #annotated_vcf = "data/interim/chr1_annotated.vcf"
+    #parse_vep_output_for_changes(annotated_vcf)
 
-    # 3. Getting PMIDs, links
-    #asyncio.run(get_list_main("data/interim/variants.csv", "results/variant_pubmed.csv"))
+    # 3. Getting PMIDs
+    #asyncio.run(get_list_main("data/interim/chr1_annotated.vcf", "results/variant_pubmed.csv"))
 
     # 4. Text mining by pubtator
     #mining_main()
     
     # 5. Shaping
-    #shaping(entities_csv="results/entities_extracted2.csv", gene_pubmed_csv="results/gene_pubmed.csv")
+    #shaping_v(entities_csv="results/extracted_v.csv", pubmed_csv="results/variant_pubmed.csv")
+    #shaping_g(entities_csv="results/extracted_g.csv", pubmed_csv="results/variant_pubmed.csv")
     
     # 6. Validating by GWAS
-    #gwas_merge(input_csv="results/gene_pubmed.csv")
+    #gwas_merge(input_csv="results/variant_pubmed.csv")
     
     # 7. Building database
     db_path = 'database/data.db'
-    #init_relations_db(csv_path="results/relations.csv", db_path=db_path)
-    #init_gene_db(csv_path="results/gene_pubmed.csv", db_path=db_path)
+    #init_Vrelations_db(csv_path="results/relations_v.csv", db_path=db_path)
+    #init_Grelations_db(csv_path="results/relations_g.csv", db_path=db_path)
+    #init_variant_db(csv_path="results/gwas_merged.csv", db_path=db_path)
     #init_mesh_db(tsv_path="database/mesh2025.tsv", db_path=db_path)
     
-    
     # 7. Visualization
-    #generate_html(relations_csv="results/relations.csv", variants_csv="results/gene_pubmed.csv")
+    launch_visualization()
 
     # Remove interim file
     #interim_files = glob.glob("data/interim/*")

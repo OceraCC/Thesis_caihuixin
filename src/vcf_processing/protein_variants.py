@@ -3,7 +3,7 @@ import vcfpy
 import pandas as pd
 import re
 
-def parse_vep_output_for_protein_changes(annotated_vcf):
+def parse_vep_output_for_changes(annotated_vcf):
     # 1) 读取注释后VCF，保存非注释行（以便我们手动处理INFO字符串）
     raw_lines = []
     with open(annotated_vcf, 'r') as f:
@@ -48,27 +48,20 @@ def parse_vep_output_for_protein_changes(annotated_vcf):
                 consequence = fields[1]
                 gene = fields[3]
                 transcript = fields[4]
-                protein_vari = fields[11]
                 variID = fields[17]
-                if protein_vari:
-                    match = re.search(r"\((.*?)\)", protein_vari)
-                    if match:
-                        result = match.group(1)
-                        variant_data.append({
-                            "Gene": gene,
-                            "Consequence": consequence,
-                            "Transcript": transcript,
-                            "Variation ID": variID,
-                            "Protein Variation": result,
-                            # 这里写入“只保留到SOR为止”的行
-                            "vcf": cleaned_line
-                        })
+                variant_data.append({
+                    "Gene": gene,
+                    "Consequence": consequence,
+                    "Transcript": transcript,
+                    "VariationID": variID,
+                    "vcf": cleaned_line
+                })
 
     # 去重 & 写CSV
     df = pd.DataFrame(variant_data)
     df_deduplicated = df.drop_duplicates()
 
-    output_csv = "data/interim/annoed_variant_id.csv"
+    output_csv = "data/interim/annoed_variant_0519.csv"
     df_deduplicated.to_csv(output_csv, index=False)
 
     return df_deduplicated

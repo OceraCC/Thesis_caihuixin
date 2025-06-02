@@ -19,51 +19,76 @@ def process_relation(rel):
 
     disease = None
     variant = None
+    category = None
     # 判断 role1 与 role2：以 identifier 以 "MESH:" 开头的为疾病
-    if role1.get("type", "") == "Disease" and role2.get("type", "") == "Variant":
+    if role1.get("type", "") == "Disease" and role2.get("type", "") in ["Variant", "Gene"]:
         disease = role1.get("identifier", "")
         variant = role2.get("name", "")
-    elif role2.get("type", "") == "Disease" and role1.get("type", "") == "Variant":
+        category = role2.get("type", "")
+    elif role2.get("type", "") == "Disease" and role1.get("type", "") in ["Variant", "Gene"]:
         disease = role2.get("identifier", "")
         variant = role1.get("name", "")
+        category = role1.get("type", "")
         
-    if not disease or not variant:
+    if not disease:
         return None
     # 返回格式化结果
-    return f"{disease}!{variant}!{score}!{r_type}"
+    return [category, f"{disease}!{variant}!{score}!{r_type}"]
 
 def extract_relations(data):
     documents = data.get("PubTator3", [])
-    results = []
+    v_results = []
+    g_results = []
     for doc in documents:
         pmid = doc.get("pmid", "")
-        all_relations = []
+        v_relations = []
+        g_relations = []
 
         top_relations = doc.get("relations", [])
         for rel in top_relations:
-            rel_str = process_relation(rel)
-            if rel_str:
-                all_relations.append(rel_str)
+            retn = process_relation(rel)
+            if retn:
+                if retn[0] == "Variant":
+                    rel_str = retn[1]
+                    if rel_str:
+                        v_relations.append(rel_str)
+                elif retn[0] == "Gene":
+                    rel_str = retn[1]
+                    if rel_str:
+                        g_relations.append(rel_str)
                 
         for passage in doc.get("passages", []):
             passage_relations = passage.get("relations", [])
             for rel in passage_relations:
-                rel_str = process_relation(rel)
-                if rel_str:
-                    all_relations.append(rel_str)
+                retn = process_relation(rel)
+                if retn:
+                    if retn[0] == "Variant":
+                        rel_str = retn[1]
+                        if rel_str:
+                            v_relations.append(rel_str)
+                    elif retn[0] == "Gene":
+                        rel_str = retn[1]
+                        if rel_str:
+                            g_relations.append(rel_str)
                     
-        if not all_relations:
+        if not g_relations or not v_relations:
             continue
         
-        relations_str = ";".join(all_relations)
-        results.append({
-            "pmid": pmid,
-            "relations": relations_str
-        })
-    return results
+        g_relations_str = ";".join(g_relations)
+        v_relations_str = ";".join(v_relations)
+        if g_relations_str:
+            g_results.append({
+                "pmid": pmid,
+                "relations": g_relations_str
+            })
+        if v_relations_str:
+            v_results.append({
+                "pmid": pmid,
+                "relations": v_relations_str
+            })
+    return g_results, v_results
 
-def write_to_csv(results):
-    output_csv = "results/entities_extracted3.csv"
+def write_to_csv(results, output_csv):
     fieldnames = ["pmid", "relations"]
     with open(output_csv, "w", newline='', encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
