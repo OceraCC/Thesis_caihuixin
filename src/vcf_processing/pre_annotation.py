@@ -14,7 +14,7 @@ def run_vep(input_vcf, output_vcf):
         '--cache',  
         '--offline',  
         '--symbol',  
-        '--fasta', '/Users/caicai/.vep/homo_sapiens/112_GRCh38/Homo_sapiens.GRCh38.dna.toplevel.fa',  # 使用压缩的FASTA文件
+        '--fasta', '/Users/caicai/.vep/homo_sapiens/112_GRCh38/Homo_sapiens.GRCh38.dna.toplevel.fa', 
         '--force_overwrite', 
         '--check_existing', 
         '--fork', '30',

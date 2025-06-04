@@ -5,16 +5,15 @@ import aiohttp
 import glob
 import os
 import subprocess
+import sys
 from vcf_processing.pre_annotation import run_vep
-from vcf_processing.protein_variants import parse_vep_output_for_changes
+from vcf_processing.variants import parse_vep_output_for_changes
 from matching.get_list import fetch_variant_info, MAX_ARTICLES
 from matching.mining import get_pmids_from_csv, query_pubtator, extract_relations, write_to_csv
 from matching.shaping_v import shaping_v
 from matching.shaping_g import shaping_g
 from db.db_init import init_Vrelations_db, init_Grelations_db, init_variant_db, init_mesh_db
 from validation.gwas_merge import gwas_merge
-import sqlite3
-import pandas as pd
 
 
 async def get_list_main(input_csv, output_csv):
@@ -50,7 +49,7 @@ async def get_list_main(input_csv, output_csv):
                 writer.writerow(row)
 
 def mining_main():
-    pmids = get_pmids_from_csv("results/variant_pubmed.csv", pmid_column="pmids")
+    pmids = get_pmids_from_csv("data/interim/variant_pubmed.csv", pmid_column="pmids")
 
     all_variant = []
     all_gene = []
@@ -78,26 +77,32 @@ def launch_visualization():
 
 def main():
     # 1. Annotation
-    # input_vcf = "data/raw/chr1.vcf"
-    # annotated_vcf = "data/interim/chr1_annotated.vcf"
-    # run_vep(input_vcf, annotated_vcf)
+    if len(sys.argv) < 2:
+        print("Usage: python main.py <input_file_path>")
+        sys.exit(1)
 
-    # # 2. Extract variants
-    #annotated_vcf = "data/interim/chr1_annotated.vcf"
-    #parse_vep_output_for_changes(annotated_vcf)
+    input_vcf = sys.argv[1]
+    print("Input file path is:", input_vcf)
+    annotated_vcf = "data/interim/annotated.vcf"
+    run_vep(input_vcf, annotated_vcf)
+
+    # 2. Extract variants
+    annotated_vcf = "data/interim/annotated.vcf"
+    output_csv = "data/interim/variants.csv"
+    parse_vep_output_for_changes(annotated_vcf, output_csv)
 
     # 3. Getting PMIDs
-    #asyncio.run(get_list_main("data/interim/chr1_annotated.vcf", "results/variant_pubmed.csv"))
+    asyncio.run(get_list_main("data/interim/variants.csv", "data/interim/variant_pubmed.csv"))
 
     # 4. Text mining by pubtator
-    #mining_main()
+    mining_main()
     
     # 5. Shaping
-    #shaping_v(entities_csv="results/extracted_v.csv", pubmed_csv="results/variant_pubmed.csv")
-    #shaping_g(entities_csv="results/extracted_g.csv", pubmed_csv="results/variant_pubmed.csv")
+    shaping_v(entities_csv="data/interim/extracted_v.csv", pubmed_csv="data/interim/variant_pubmed.csv")
+    shaping_g(entities_csv="data/interim/extracted_g.csv", pubmed_csv="data/interim/variant_pubmed.csv")
     
     # 6. Validating by GWAS
-    #gwas_merge(input_csv="results/variant_pubmed.csv")
+    gwas_merge(input_csv="data/interim/variant_pubmed.csv")
     
     # 7. Building database
     db_path = 'database/data.db'
@@ -110,9 +115,9 @@ def main():
     launch_visualization()
 
     # Remove interim file
-    #interim_files = glob.glob("data/interim/*")
-    #for f in interim_files:
-     #   os.remove(f)
+    interim_files = glob.glob("data/interim/*")
+    for f in interim_files:
+       os.remove(f)
     
     print("Pipeline completed.")
 

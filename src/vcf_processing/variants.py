@@ -3,8 +3,8 @@ import vcfpy
 import pandas as pd
 import re
 
-def parse_vep_output_for_changes(annotated_vcf):
-    # 1) 读取注释后VCF，保存非注释行（以便我们手动处理INFO字符串）
+def parse_vep_output_for_changes(annotated_vcf, output_csv):
+    # After reading the annotated VCF, save the non-annotate lines (so that the INFO string could be processed)
     raw_lines = []
     with open(annotated_vcf, 'r') as f:
         for line in f:
@@ -12,7 +12,7 @@ def parse_vep_output_for_changes(annotated_vcf):
             if not line.startswith('#'):
                 raw_lines.append(line)
 
-    # 2) 用 vcfpy 解析（从注释里提取CSQ进行后续表格信息处理）
+    # Parsing with vcfpy (extracting CSQ from comments for subsequent table information processing)
     vcf_reader = vcfpy.Reader.from_path(annotated_vcf)
 
     variant_data = []
@@ -24,21 +24,21 @@ def parse_vep_output_for_changes(annotated_vcf):
 
         columns = original_line.split('\t')
         if len(columns) >= 8:
-            info = columns[7]  # 第8列是INFO
+            info = columns[7]  # Column 8 is INFO
 
-            # 找到 "CSQ=" 起始位置
+            # Find the starting position of "CSQ="
             idx_csq = info.find("CSQ=")
             if idx_csq != -1:
-                # 若前面有分号，则也一起去除
+                # If there is a semicolon in front, remove it as well.
                 start_cut = idx_csq
                 if start_cut > 0 and info[start_cut - 1] == ';':
                     start_cut -= 1
-                info = info[:start_cut].rstrip(';')  # 保留到CSQ前，并清理末尾分号
+                info = info[:start_cut].rstrip(';')  # Keep it until CSQ and clean up the trailing semicolon
 
             columns[7] = info
             cleaned_line = '\t'.join(columns[:8])
         else:
-            # 如果列数异常，就原样保留
+            # If the number of columns is abnormal, keep it as is
             cleaned_line = original_line
 
         csq_info = record.INFO.get("CSQ")
@@ -57,11 +57,10 @@ def parse_vep_output_for_changes(annotated_vcf):
                     "vcf": cleaned_line
                 })
 
-    # 去重 & 写CSV
+    # Deduplication & Writing CSV
     df = pd.DataFrame(variant_data)
     df_deduplicated = df.drop_duplicates()
 
-    output_csv = "data/interim/annoed_variant_0519.csv"
     df_deduplicated.to_csv(output_csv, index=False)
 
     return df_deduplicated
