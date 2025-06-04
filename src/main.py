@@ -8,7 +8,7 @@ import subprocess
 import sys
 from vcf_processing.pre_annotation import run_vep
 from vcf_processing.variants import parse_vep_output_for_changes
-from matching.get_list import fetch_variant_info, MAX_ARTICLES
+from matching.get_list import fetch_pmids, MAX_ARTICLES
 from matching.mining import get_pmids_from_csv, query_pubtator, extract_relations, write_to_csv
 from matching.shaping_v import shaping_v
 from matching.shaping_g import shaping_g
@@ -19,7 +19,8 @@ from validation.gwas_merge import gwas_merge
 async def get_list_main(input_csv, output_csv):
     rows = []
     variants = []
-
+    
+    print("Fetching articles...")
     with open(input_csv, 'r', newline='') as f:
         reader = csv.DictReader(f)
         fieldnames = reader.fieldnames + ["pmids"]
@@ -32,21 +33,19 @@ async def get_list_main(input_csv, output_csv):
     cache = {}
 
     async with aiohttp.ClientSession() as session:
-        tasks = [fetch_variant_info(session, v, cache) for v in unique_variants]
-        await asyncio.gather(*tasks)
+        tasks = [fetch_pmids(session, v) for v in unique_variants]
+        results = await asyncio.gather(*tasks)
+        for var, pmid_list in zip(unique_variants, results):
+            cache[var] = pmid_list
 
     with open(output_csv, 'w', newline='') as f:
-        fieldnames = list(rows[0].keys()) + ["pmids"]
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         for row in rows:
             var = row["Gene"]
-            info = cache.get(var, [])
-            info = info[:MAX_ARTICLES]
-            pmids = "\n".join(info)
-            if pmids:
-                row["pmids"] = pmids
-                writer.writerow(row)
+            pmids = "\n".join(cache.get(var, [])[:MAX_ARTICLES])
+            row["pmids"] = pmids
+            writer.writerow(row)
 
 def mining_main():
     pmids = get_pmids_from_csv("data/interim/variant_pubmed.csv", pmid_column="pmids")
@@ -92,7 +91,7 @@ def main():
     parse_vep_output_for_changes(annotated_vcf, output_csv)
 
     # 3. Getting PMIDs
-    asyncio.run(get_list_main("data/interim/variants.csv", "data/interim/variant_pubmed.csv"))
+    asyncio.run(get_list_main("data/interim/annoed_variant_0519.csv", "data/interim/variant_pubmed2.csv"))
 
     # 4. Text mining by pubtator
     mining_main()

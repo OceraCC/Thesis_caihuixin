@@ -1,9 +1,6 @@
-import csv
 import asyncio
 import aiohttp
 import xml.etree.ElementTree as ET
-
-from urllib.parse import quote
 
 # PubMed E-utilities URLs
 ESEARCH_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
@@ -21,7 +18,6 @@ async def fetch_pmids(session, variant, retries=3):
         "retmode": "json",
         "api_key": API_KEY
     }
-    print("start1")
     for attempt in range(retries):
         try:
             async with SEM:
@@ -36,40 +32,3 @@ async def fetch_pmids(session, variant, retries=3):
         except aiohttp.ClientError:
             await asyncio.sleep(1)
     return []
-
-async def fetch_pubmed_details(session, pmids, retries=3):
-    if not pmids:
-        return []
-    params = {
-        "db": "pubmed",
-        "id": ",".join(pmids),
-        "retmode": "xml"
-    }
-    print("start2")
-    for attempt in range(retries):
-        try:
-            async with SEM:
-                async with session.get(EFETCH_URL, params=params) as resp:
-                    if resp.status == 200:
-                        text = await resp.text()
-                        root = ET.fromstring(text)
-                        results = []
-                        for article in root.findall(".//PubmedArticle"):
-                            pmid_el = article.find(".//PMID")
-                            pmid = pmid_el.text if pmid_el is not None else ""
-                            results.append(pmid)
-                        return results
-                    else:
-                        print(resp.status)
-                        await asyncio.sleep(1)
-        except aiohttp.ClientError:
-            await asyncio.sleep(1)
-    return []
-
-async def fetch_variant_info(session, variant, cache):
-    if variant in cache:
-        return cache[variant]
-    pmids = await fetch_pmids(session, variant)
-    details = await fetch_pubmed_details(session, pmids)
-    cache[variant] = details
-    return details
