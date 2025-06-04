@@ -9,9 +9,7 @@ from streamlit_agraph import agraph, Node, Edge, Config
 
 # Disease map
 CATEGORY_MAP = {
-    "C01": "Bacterial Infections and Mycoses",
-    "C02": "Virus Diseases",
-    "C03": "Parasitic Diseases",
+    "C01": "Infections",
     "C04": "Neoplasms",
     "C05": "Musculoskeletal Diseases",
     "C06": "Digestive System Diseases",
@@ -20,15 +18,14 @@ CATEGORY_MAP = {
     "C09": "Otorhinolaryngologic Diseases",
     "C10": "Nervous System Diseases",
     "C11": "Eye Diseases",
-    "C12": "Male Urogenital Diseases",
-    "C13": "Female Urogenital Diseases and Pregnancy Complications",
+    "C12": "Urogenital Diseases",
     "C14": "Cardiovascular Diseases",
     "C15": "Hemic and Lymphatic Diseases",
     "C16": "Congenital, Hereditary, and Neonatal Diseases and Abnormalities",
     "C17": "Skin and Connective Tissue Diseases",
     "C18": "Nutritional and Metabolic Diseases",
     "C19": "Endocrine System Diseases",
-    "C20": "Immunologic Diseases",
+    "C20": "Immune System Diseases",
     "C21": "Disorders of Environmental Origin",
     "C22": "Animal Diseases",
     "C23": "Pathological Conditions, Signs and Symptoms",
@@ -39,9 +36,10 @@ CATEGORY_MAP = {
 }
 
 def get_category(tree_number):
-    if not tree_number:
+    cls = [t.split(".")[0] for t in tree_number if isinstance(t, str)]
+    if not cls:
         return "Unknown"
-    for prefix in tree_number:
+    for prefix in cls:
         if prefix in CATEGORY_MAP:
             return CATEGORY_MAP[prefix]
     return "Unknown"
@@ -53,11 +51,15 @@ def score_to_size(score):
         adjusted = (score - 0.9) / 0.1
         size = 6 + (adjusted ** 3) * 10
         return size
-    
+
+def keep_row(class_list):
+    return all(c not in to_exclude for c in class_list)
+  
 def build_graph(gene_name, df_gene):
     # 统计每个分类码出现次数
-    code_lists = df_gene['classification'].apply(lambda x: x if isinstance(x, list) else [])
-    code_counts = Counter([c for codes in code_lists for c in codes])
+    cate_list = df_gene['classification'].apply(lambda lst: [s.split('.')[0] for s in lst if isinstance(s, str)] if isinstance(lst, list) else [])
+    code_list = [list(t) for t in set(tuple(x) for x in cate_list)]
+    code_counts = Counter([c for codes in code_list for c in list(set(codes))])
 
     nodes = []
     edges = []
@@ -70,11 +72,11 @@ def build_graph(gene_name, df_gene):
 
     for _, row in df_gene.iterrows():
         dis = row['disease']
-        codes = row['classification']
+        codes = list(set([t.split(".")[0] for t in row['classification'] if isinstance(t, str)]))
         score = row['score']
 
         # 确保疾病节点只添加一次
-        if dis not in seen_nodes and dis!="Neoplasms" :
+        if dis not in seen_nodes:
             nodes.append(Node(id=dis, label=dis, size=score_to_size(score), title=score))
             seen_nodes.add(dis)
 
@@ -169,6 +171,16 @@ if st.button("Query", key="gene"):
     df_rsID = query_rsID(gene_name, db_path)
     df_gene_vcf = query_gene_vcf(gene_name, db_path)
     
+    df_gene['classification'] = df_gene['classification'].apply(lambda x: x.split("|") if isinstance(x, str) else [x])
+    all_codes = [code for sublist in df_gene['classification'] for code in sublist]
+    to_exclude = set()
+    for a in all_codes:
+        for b in all_codes:
+            if a != b and b.startswith(a + '.'):
+                to_exclude.add(a)
+                
+    df_gene = df_gene[df_gene['classification'].apply(keep_row)]
+    
     st.session_state["df_gene"] = df_gene
     st.session_state["df_rsID"] = df_rsID
     st.session_state["df_gene_vcf"] = df_gene_vcf
@@ -182,12 +194,8 @@ if "df_gene" in st.session_state and not st.session_state["df_gene"].empty:
     df_gene_vcf = st.session_state["df_gene_vcf"]
     df_rsID = st.session_state["df_rsID"]
     
-    try:           
+    try:       
         st.success(f"{len(df_gene)} diseases in total")
-        
-        df_gene['classification'] = df_gene['classification'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
-        df_gene['Category'] = df_gene['classification'].apply(get_category)
-        
         st.subheader("Disease Network Visualization")
 
         nodes, edges = build_graph(st.session_state['gene_name'], df_gene)

@@ -101,10 +101,10 @@ def main():
     
     # 7. Building database
     db_path = 'database/data.db'
-    #init_Vrelations_db(csv_path="results/relations_v.csv", db_path=db_path)
-    #init_Grelations_db(csv_path="results/relations_g.csv", db_path=db_path)
-    #init_variant_db(csv_path="results/gwas_merged.csv", db_path=db_path)
-    #init_mesh_db(tsv_path="database/mesh2025.tsv", db_path=db_path)
+    init_Vrelations_db(csv_path="results/relations_v.csv", db_path=db_path)
+    init_Grelations_db(csv_path="results/relations_g.csv", db_path=db_path)
+    init_variant_db(csv_path="results/gwas_merged.csv", db_path=db_path)
+    init_mesh_db(tsv_path="database/mesh2025.tsv", db_path=db_path)
     
     # 7. Visualization
     launch_visualization()
