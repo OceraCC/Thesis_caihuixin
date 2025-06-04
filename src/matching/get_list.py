@@ -27,7 +27,6 @@ async def fetch_pmids(session, variant, retries=3):
                         pmid_list = data.get("esearchresult", {}).get("idlist", [])
                         return pmid_list
                     else:
-                        print(resp.status)
                         await asyncio.sleep(2)
         except aiohttp.ClientError:
             await asyncio.sleep(1)

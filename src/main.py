@@ -81,19 +81,21 @@ def main():
         sys.exit(1)
 
     input_vcf = sys.argv[1]
-    print("Input file path is:", input_vcf)
     annotated_vcf = "data/interim/annotated.vcf"
+    print("Annotating...")
     run_vep(input_vcf, annotated_vcf)
 
     # 2. Extract variants
     annotated_vcf = "data/interim/annotated.vcf"
     output_csv = "data/interim/variants.csv"
+    print("Extracting variants...")
     parse_vep_output_for_changes(annotated_vcf, output_csv)
 
     # 3. Getting PMIDs
-    asyncio.run(get_list_main("data/interim/annoed_variant_0519.csv", "data/interim/variant_pubmed2.csv"))
+    asyncio.run(get_list_main("data/interim/variants.csv", "data/interim/variant_pubmed.csv"))
 
     # 4. Text mining by pubtator
+    print("Text mining...")
     mining_main()
     
     # 5. Shaping
@@ -101,22 +103,24 @@ def main():
     shaping_g(entities_csv="data/interim/extracted_g.csv", pubmed_csv="data/interim/variant_pubmed.csv")
     
     # 6. Validating by GWAS
+    print("Validating...")
     gwas_merge(input_csv="data/interim/variant_pubmed.csv")
     
     # 7. Building database
+    print("Preparing for visualization...")
     db_path = 'database/data.db'
     init_Vrelations_db(csv_path="results/relations_v.csv", db_path=db_path)
     init_Grelations_db(csv_path="results/relations_g.csv", db_path=db_path)
     init_variant_db(csv_path="results/gwas_merged.csv", db_path=db_path)
     init_mesh_db(tsv_path="database/mesh2025.tsv", db_path=db_path)
     
-    # 7. Visualization
-    launch_visualization()
-
     # Remove interim file
     interim_files = glob.glob("data/interim/*")
     for f in interim_files:
        os.remove(f)
+    
+    # 7. Visualization
+    launch_visualization()
     
     print("Pipeline completed.")
 
