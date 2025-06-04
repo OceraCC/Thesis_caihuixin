@@ -56,7 +56,7 @@ def keep_row(class_list):
     return all(c not in to_exclude for c in class_list)
   
 def build_graph(gene_name, df_gene):
-    # 统计每个分类码出现次数
+    # count categories, for making hierachical network
     cate_list = df_gene['classification'].apply(lambda lst: [s.split('.')[0] for s in lst if isinstance(s, str)] if isinstance(lst, list) else [])
     code_list = [list(t) for t in set(tuple(x) for x in cate_list)]
     code_counts = Counter([c for codes in code_list for c in list(set(codes))])
@@ -65,7 +65,7 @@ def build_graph(gene_name, df_gene):
     edges = []
     seen_nodes = set()
 
-    # 基因节点
+    # draw the gene node
     gene_link = f"https://meshb.nlm.nih.gov/record/ui?ui={gene_name}"
     nodes.append(Node(id=gene_name, label=gene_name, size=10, color="#035DA6", link=gene_link))
     seen_nodes.add(gene_name)
@@ -75,17 +75,17 @@ def build_graph(gene_name, df_gene):
         codes = list(set([t.split(".")[0] for t in row['classification'] if isinstance(t, str)]))
         score = row['score']
 
-        # 确保疾病节点只添加一次
+        # avoid duplication of diseases
         if dis not in seen_nodes:
             nodes.append(Node(id=dis, label=dis, size=score_to_size(score), title=score))
             seen_nodes.add(dis)
 
-        # 分离共享与唯一分类
+        # make hierachical structure, if a category shows more than once, then take it as a parent class
         shared = [c for c in codes if code_counts[c] > 1]
         unique = [c for c in codes if code_counts[c] == 1]
 
         if shared:
-            # 添加共享分类节点并从基因连接
+            # add shared categories, which are parent nodes
             for sc in shared:
                 sc_id = f"cat_{sc}"
                 if sc_id not in seen_nodes:
@@ -96,9 +96,9 @@ def build_graph(gene_name, df_gene):
                         nodes.append(Node(id=sc_id, label='unknown', color="#858FD4", size=10))
                         edges.append(Edge(source=gene_name, target=sc_id))
                     seen_nodes.add(sc_id)
-            # 添加唯一分类节点，并连接到共享分类，再连疾病
+            # add unique nodes, which are only counted once, regarded as child nodes
             if unique:
-                # 先添加唯一分类节点
+                # add nodes
                 for uc in unique:
                     uc_id = f"cat_{uc}"
                     if uc_id not in seen_nodes:
@@ -107,17 +107,17 @@ def build_graph(gene_name, df_gene):
                         else:
                             nodes.append(Node(id=sc_id, label='unknown', color="#858FD4", size=10))
                         seen_nodes.add(uc_id)
-                    # 连接 shared -> unique
+                    # shared node -> unique node
                     for sc in shared:
                         edges.append(Edge(source=f"cat_{sc}", target=uc_id))
-                    # 再连接 unique -> 疾病
+                    # unique node -> disease node
                     edges.append(Edge(source=uc_id, target=dis))
             else:
-                # 如果只有共享分类，直接连接 shared -> 疾病
+                # If there are only shared nodes, shared node -> disease node
                 for sc in shared:
                     edges.append(Edge(source=f"cat_{sc}", target=dis))
         else:
-            # 无共享分类，合并为一个节点
+            # If there is no shared categories, merge multiple unique nodes
             comp_id = "cat_" + "_".join(codes)
             if comp_id not in seen_nodes:
                 comp_label = "/".join([CATEGORY_MAP[c] for c in codes if c in CATEGORY_MAP])
@@ -128,7 +128,7 @@ def build_graph(gene_name, df_gene):
 
     return nodes, edges
 
-# 页面内容
+# Page content
 st.set_page_config(
     page_icon="🧬",
     layout="wide"
@@ -144,10 +144,11 @@ for key, default in {
     if key not in st.session_state:
         st.session_state[key] = default
 
-# 定位数据库
+# Datebase path
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 db_path = os.path.join(project_root, 'database', 'data.db')
-    
+
+# query by location   
 loc = st.text_input("Type a location(e.g. chr1:18477480)")
 
 if st.button("Query", key="loc"):
@@ -160,9 +161,10 @@ if st.session_state["queried_genes"]:
             st.write(gene)
         with cols[1]:
             if st.button("Choose", key=gene):
-                st.session_state["gene_name"] = gene
+                st.session_state["gene_name"] = gene  # If choosing a gene, it's written into the gene search box
                 st.session_state["queried_genes"] = ""
-                        
+
+# query by gene name                        
 gene_name = st.text_input("Type a gene", value=st.session_state.get("gene_name", ""))
 
 if st.button("Query", key="gene"):
@@ -171,6 +173,7 @@ if st.button("Query", key="gene"):
     df_rsID = query_rsID(gene_name, db_path)
     df_gene_vcf = query_gene_vcf(gene_name, db_path)
     
+    # exclude records that contain parental categories of diseases, in order to make the network shows correct hierachical structure
     df_gene['classification'] = df_gene['classification'].apply(lambda x: x.split("|") if isinstance(x, str) else [x])
     all_codes = [code for sublist in df_gene['classification'] for code in sublist]
     to_exclude = set()
@@ -211,7 +214,7 @@ if "df_gene" in st.session_state and not st.session_state["df_gene"].empty:
                             "hover": True}
         )
         selected = agraph(nodes=nodes, edges=edges, config=config)
-        # 选中节点后展示链接或提示
+        # after clicking the disease node, it shows the mesh website link
         if selected:
             match = df_gene[df_gene['disease'] == selected]
             if not match.empty:
@@ -233,6 +236,7 @@ if "df_gene" in st.session_state and not st.session_state["df_gene"].empty:
                 ID_disease[k].add(v)
             df_gene_vcf["disease"] = df_gene_vcf["Variant ID"].apply(lambda x: ID_disease.get(x, diseases))
         
+        # table view
         st.dataframe(df_gene_vcf)
 
     except Exception as e:
