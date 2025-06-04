@@ -24,5 +24,5 @@ https://www.ensembl.org/info/docs/tools/vep/index.html
 ## Usage
 
 ```bash
-python main.py
+python main.py input_file_path
 ```
