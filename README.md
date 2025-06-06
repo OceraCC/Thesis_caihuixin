@@ -22,8 +22,9 @@ https://www.ensembl.org/info/docs/tools/vep/index.html
 
 4. Install cache
 
+```bash
 perl INSTALL.pl --AUTO c --SPECIES homo_sapiens --ASSEMBLY GRCh38 --CACHE_VERSION 114 --NO_HTSLIB
-
+```
 
 ## Usage
 
