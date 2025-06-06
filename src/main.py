@@ -64,8 +64,8 @@ def mining_main():
         all_gene.extend(gene_rels)
 
     # Write to separate files
-    write_to_csv(all_variant, "results/extracted_v.csv")
-    write_to_csv(all_gene, "results/extracted_g.csv")
+    write_to_csv(all_variant, "data/interim/extracted_v.csv")
+    write_to_csv(all_gene, "data/interim/extracted_g.csv")
     
 def launch_visualization():
     vis_path = os.path.join(os.path.dirname(__file__), 'visualization', 'page.py')
