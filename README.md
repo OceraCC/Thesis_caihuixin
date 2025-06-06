@@ -6,14 +6,14 @@ This is an end-to-end bioinformatics tool for identifying disease associations f
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/OceraCC/Thesis.git
-cd Thesis
+git clone https://github.com/OceraCC/Thesis_caihuixin.git
+cd Thesis_caihuixin
 ```
 
 2. Install dependencies:
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirement.txt
 ```
 
 3. Install Ensembl VEP and ensure it is in your PATH:
@@ -24,5 +24,5 @@ https://www.ensembl.org/info/docs/tools/vep/index.html
 ## Usage
 
 ```bash
-python main.py input_file_path
+python src/main.py input_file_path
 ```
