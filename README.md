@@ -16,9 +16,13 @@ cd Thesis_caihuixin
 pip install -r requirement.txt
 ```
 
-3. Install Ensembl VEP and ensure it is in your PATH:
+3. Install Ensembl VEP and ensure it is in your PATH(version 114):
 
 https://www.ensembl.org/info/docs/tools/vep/index.html
+
+4. Install cache
+
+perl INSTALL.pl --AUTO c --SPECIES homo_sapiens --ASSEMBLY GRCh38 --CACHE_VERSION 114 --NO_HTSLIB
 
 
 ## Usage
