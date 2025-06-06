@@ -24,6 +24,7 @@ https://www.ensembl.org/info/docs/tools/vep/index.html
 
 ```bash
 perl INSTALL.pl --AUTO c --SPECIES homo_sapiens --ASSEMBLY GRCh38 --CACHE_VERSION 114 --NO_HTSLIB
+## make sure you're under your vep folder
 ```
 
 ## Usage
